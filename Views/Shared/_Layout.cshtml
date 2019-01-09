@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Xpanxion Angular starter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/Images/favicon.ico" />
+
+    <link href="/assets/styles/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/assets/styles/font-awesome.min.css" type="text/css" rel="stylesheet">    
+    <link href="/assets/styles/jquery-ui.min.css" type="text/css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    
+    <environment include="Development">
+        <link href="/assets/styles/app.component.css" type="text/css" rel="stylesheet">
+        <link href="/assets/styles/spinner.component.css" type="text/css" rel="stylesheet">
+        <link href="/assets/styles/public.component.css" type="text/css" rel="stylesheet">
+        
+        <link href="/assets/styles/toastr.component.css" type="text/css" rel="stylesheet">
+        <link href="/assets/styles/product-dialog.component.css" type="text/css" rel="stylesheet">
+        <link href="/assets/styles/ng2-select.css" type="text/css" rel="stylesheet"> 
+    </environment>
+
+    <environment exclude="Development">
+         <link href="/assets/styles/sitestyle.min.css?v=2017.08.27" type="text/css" rel="stylesheet">
+    </environment>
+    
+    <!-- 1. Load libraries -->
+    <script src="/assets/References/jquery-2.2.0.min.js"></script>
+    <script src="/assets/References/jquery.signalR-2.2.1.min.js"></script>
+    
+    <script src="/assets/References/bootstrap.min.js"></script>
+    <script src="/assets/References/Intl.min.js"></script>
+    <script src="/assets/References/en.js"></script>
+
+    <script>window.resourcesVersion = JSON.stringify(new Date());</script>
+
+    <environment include="Development">
+        <!-- Polyfill(s) for older browsers -->
+        <script src="/node_modules/core-js/client/shim.min.js"></script>
+        <script src="/node_modules/zone.js/dist/zone.min.js"></script>
+        <script src="/node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="/node_modules/systemjs/dist/system.src.js"></script>
+        <script src="/node_modules/ng2-toastr/bundles/ng2-toastr.min.js"></script>
+
+        <!-- 2. Configure SystemJS -->
+        <script src="systemjs.config.js"></script>
+        <script>
+
+            var isUserLoggedIn = localStorage.getItem('isLoggedIn') == 'true';    
+            var appName = isUserLoggedIn ? "app" : "public-app";
+            System.import(appName)
+                .catch(
+                        function (err) {
+                            console.error(err);
+                        });
+        </script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="/aot/shim.min.js?v=2.1.4"></script>
+        <script src="/aot/zone.min.js?v=0.7.4"></script>
+        <script>window.module = 'aot';</script>
+    </environment>
+
+</head>
+<body>
+   
+    <div>
+        @RenderBody()
+    </div>
+
+    <environment exclude="Development">    
+        <script src="/aot/dist/build.js?v=2017.08.27"></script>
+        <script src="/aot/dist/public.build.js?v=2017.08.27"></script>
+    </environment>
+
+</body>
+</html>

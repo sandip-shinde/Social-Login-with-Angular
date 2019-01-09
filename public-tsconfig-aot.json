@@ -1,0 +1,30 @@
+﻿{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    //"lib": [ "es2015", "dom" ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+    "paths": {
+      "core-module/*": [ "core-module/*" ]
+    }
+  },
+  "files": [
+    "public-app/public-app.module.ts",
+    "public-app/main-aot.ts"
+  ],
+  "angularCompilerOptions": {
+   "genDir": "aot",
+   "skipMetadataEmit" : true
+ }
+}
+

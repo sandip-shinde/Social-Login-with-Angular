@@ -1,0 +1,93 @@
+.pull-right {
+    float: right!important;
+}
+.pull-left {
+    float: left!important;
+}
+.marginZero{
+    margin:0px 0px !important;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.page-header .headerLogo{
+	float: right;
+	padding: 15px 0 0 10px;
+    height: 40px !important;
+}
+
+.page-header{
+	height: 55px;
+}
+
+.page-header div{
+	height: 100%;
+}
+
+/*.page-header img{
+	height: 100%;	
+}*/
+
+.page-header .pull-left{
+	padding-top:3px;
+}
+
+.page-header .hamburgerIcon{
+	width: 20px;
+    cursor: pointer;
+    background-image: url('../images/hamburgerIcon.png');
+    background-repeat: no-repeat;
+    background-position: 0px;
+    background-size: 20px 20px;
+    display: inline-block;
+    position:relative;
+}
+
+.page-header .mainLogo{
+	display: inline-block;
+	padding-left: 35px;
+}
+
+.page-header .mainLogo img{
+	vertical-align: baseline;
+    height:44px;
+    position:relative;
+    top:5px;
+}
+
+.page-header .headerClock{
+	height: 80% !important;
+    background-image: url('../images/clock.png');
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    width: 40px;
+    background-position: 0 5px;
+}
+
+.page-header .headerContent{
+    background: transparent url("../images/downArrow.png") no-repeat 80% 72%;
+    float: left;
+    padding: 18px 40px 0 13px;
+    background-size: 15%;
+}
+
+.page-header .headerRightSection > div{
+	display: inline-block;
+}
+.hmenu{position:absolute; left:-2px; top:30px; font-size:9px;}
+.userName {
+    font-size: 15px;
+}
+.grayNumberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    padding: 3px 6px;
+    background: #575757;
+    color: #ffffff;
+    text-align: center;
+    font: 12px /*Arial, sans-serif*/;
+}

@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  
+  <Target Name="BeforeBuildSteps" BeforeTargets="Build" Condition="$(ConfigurationName) != 'debug'">
+    
+    <Copy SourceFiles="app\config\environment.$(ConfigurationName).ts" DestinationFiles="app\environment.ts" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+    
+	<Copy SourceFiles="public-app\config\environment.$(ConfigurationName).ts" DestinationFiles="public-app\environment.ts" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true" />
+    
+    <Exec Command="&quot;C:\Program Files\nodejs\npm&quot; --cache-min 9999999 install"  WorkingDirectory="$(ProjectDir)"/>
+    
+  </Target>
+  
+  <Target Name="AfterBuildSteps" AfterTargets="Build" Condition="$(ConfigurationName) != 'debug'">
+
+    <Exec Command="&quot;C:\Program Files\nodejs\npm&quot; run build:aot" />
+
+    <Exec Command="&quot;C:\Program Files\nodejs\npm&quot; run cleancss" />
+	
+  </Target>
+  
+  <ItemGroup>
+  
+	<Content Update=".\**\*.json" CopyToPublishDirectory="Never" />
+	
+    <ResolvedFileToPublish Include="node_modules\core-js\client\shim.min.js">
+      <RelativePath>aot\shim.min.js</RelativePath>
+    </ResolvedFileToPublish>
+	
+	<ResolvedFileToPublish Include="node_modules\zone.js\dist\zone.min.js">
+      <RelativePath>aot\zone.min.js</RelativePath>
+    </ResolvedFileToPublish>
+	
+	<ResolvedFileToPublish Include="aot\dist\build.js">
+      <RelativePath>aot\dist\build.js</RelativePath>
+    </ResolvedFileToPublish>
+	
+	<ResolvedFileToPublish Include="aot\dist\public.build.js">
+      <RelativePath>aot\dist\public.build.js</RelativePath>
+    </ResolvedFileToPublish>
+	
+	<ResolvedFileToPublish Include="assets\**\*.*">
+      <RelativePath>assets\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+    </ResolvedFileToPublish>
+	
+	<ResolvedFileToPublish Include="assets\styles\sitestyle.min.css">
+      <RelativePath>assets\styles\sitestyle.min.css</RelativePath>
+    </ResolvedFileToPublish>
+	
+  </ItemGroup>
+
+</Project>

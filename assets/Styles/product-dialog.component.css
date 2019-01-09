@@ -1,0 +1,184 @@
+﻿.ProductDialogComponent {
+   width: 70%;
+   max-width: 100%;
+}
+
+.ProductDialogComponent .modal-content{/*padding-bottom: 15px;*/ min-height:375px; /*float: left;*/ }
+
+.no-padding-left {
+    padding-left: 0;
+}
+
+.pop-up-top-margin {
+    margin-top: 20px;
+}
+/*Product popup details css*/
+.slidingDiv {
+    min-height: 244px;
+    /*padding: 10px;*/
+    margin-top: -37px;
+    /*float: left;*/
+    width: 100%;
+    position: relative;
+    left: 0px;
+    z-index: 160;
+    display: block;
+}
+
+.ProductDialogComponent .main-img img {
+    width: 85%;
+    position: relative;
+    /*left: 10px;*/
+    top: 0px;
+}
+
+.popup-prod-close {
+    position: absolute;
+    right: 17px;
+    top: 5px;
+}
+
+.ProductDialogComponent .itemText {
+    font-size: 20px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.ProductDialogComponent .preferredBlock {
+    top: 3px;
+    right: -1.7%;
+}
+
+.ProductDialogComponent p.center-matter {
+    display: inline-block;
+    float: left;
+    width: 43%;
+    margin: 0;
+}
+
+.ProductDialogComponent .diff-p-area {
+    position: relative;
+    top: 0px;
+}
+
+.ProductDialogComponent .p-lft-custom {
+    left: 23px;
+}
+
+.ProductDialogComponent .brand-img {
+    top: 80px;
+    /*position: absolute;
+    right: 26px;*/
+}
+
+    .ProductDialogComponent .brand-img img {
+        height: 67px;
+    }
+
+.ProductDialogComponent .cartItem {
+    text-align: right;
+    position: relative;
+    top: 15px;
+}
+
+.ProductDialogComponent .addToCartButton {
+    margin-left: 15px;
+    height:31px;
+}
+
+.ProductDialogComponent .pro-pop-up-cost {
+    text-align: right;
+    top: 15px;
+}
+
+.product-details-page {
+    position: relative;
+}
+
+.ProductDialogComponent .prop-pop-title {
+    margin-bottom: 15px;
+    color: #104261;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 50%;
+    text-overflow: ellipsis;
+}
+
+.ProductDialogComponent .product-descrip {
+    height: 44px;
+    overflow-y: auto;
+    float: left;
+    margin-bottom: 8px;
+}
+
+.ProductDialogComponent .currencyText {
+    color: #104261;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ProductDialogComponent .currencyValueText {
+    color: #565656;
+    font-size: 14px;
+    text-decoration: line-through;
+    padding-left: 14px;
+}
+
+.ProductDialogComponent .UnitOfMeasure {
+    color: #104261;
+    font-size: 14px;
+}
+
+.ProductDialogComponent .quantityInputBox {
+    border: 1px solid #cccccc;
+    width: 43px;
+    color: #333333;
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+}
+
+.ProductDialogComponent .catalogImage {
+    /*width: 112px;*/
+    height: 67px;
+}
+
+.supplier-name-dialog {
+    width: 90%;
+
+}
+.ProductDialogComponent .modal-header .close span{    position: relative; top: -8px;}
+
+@media (min-width:1280px ) and (max-width:1440px) {
+    .ProductDialogComponent .preferredBlock {
+    right: -1.9%;
+}
+}
+@media (min-width:1025px ) and (max-width:1152px) {
+    .ProductDialogComponent .preferredBlock {
+     right: -2.1%;
+}
+    .ProductDialogComponent .main-img img{left: 20px;}
+
+
+}
+@media (min-width:768px ) and (max-width:800px) {
+       .ProductDialogComponent .preferredBlock {
+     right: -2.9%;
+}
+}
+@media (width:1024px) {
+   .ProductDialogComponent {
+    width: 90%;
+    
+}
+   .ProductDialogComponent .preferredBlock {
+     left: -2.3%;
+}
+}
+@media (width:1280px) {
+    .ProductDialogComponent .main-img img{left: 15px;}
+}
+@media (width:1366px) {
+    .ProductDialogComponent .main-img img{left: 15px;}
+}

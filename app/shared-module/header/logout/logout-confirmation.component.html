@@ -1,0 +1,18 @@
+﻿<modal class="logout-confirm-popup" [animation]="true" [keyboard]="true" [backdrop]="true" (onDismiss)="dismissModal()"
+       (onClose)="closeAndInstructLogoutToParent()" #modal>
+    <div class="element-focus-indicator logout-popup-focus-container" focusIndex="10000" #logoutContainer autofocus>
+        <div class="logout-poup-container">
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">{{'SHARED.HEADER.logoutConfirmation.dialogTitle' | translate }}</h4>
+            </modal-header>
+            <modal-body>
+                <p>{{'SHARED.HEADER.logoutConfirmation.dialogMessage' | translate }}</p>
+            </modal-body>
+            <modal-footer>
+                <button focusIndex="10001" type="button" class="btn btn-primary" (click)="modal.close()">{{'SHARED.HEADER.logoutConfirmation.primaryButton' | translate }}</button>
+                <button focusIndex="10002" type="button" class="btn btn-default" (click)="modal.dismiss()">{{'SHARED.HEADER.logoutConfirmation.secondaryButton' | translate }}</button>
+            </modal-footer>
+        </div>
+    </div>
+</modal>
+

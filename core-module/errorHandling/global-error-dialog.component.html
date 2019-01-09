@@ -1,0 +1,12 @@
+﻿<modal [animation]="true" [keyboard]="true" [backdrop]="true" (onClose)="logout()" (onOpen)="initDialogData()" #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title" [innerText]="_dialogTitle"></h4>
+    </modal-header>
+    <modal-body>
+        <p [innerText]="_message"></p>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" (click)="modal.dismiss()" *ngIf="_isShowSecondaryButton == true" [innerText]="_secondaryButtonText" ></button>
+        <button type="button" class="btn btn-primary" autofocus (click)="modal.close()"  [innerText]="_primaryButtonText"></button>
+    </modal-footer>
+</modal>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Xpanxion Angular starter</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/Images/favicon.ico" />
+
+    <link href="/assets/styles/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/assets/styles/font-awesome.min.css" type="text/css" rel="stylesheet">    
+    <link href="/assets/styles/jquery-ui.min.css" type="text/css" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    
+    <link href="/assets/styles/sitestyle.min.css?v=2017.08.27" type="text/css" rel="stylesheet">
+        
+    <script src="/assets/References/jquery-2.2.0.min.js"></script>
+    <script src="/assets/References/bootstrap.min.js"></script>
+    <script src="/assets/References/Intl.min.js"></script>
+    <script src="/assets/References/en.js"></script>
+
+    <script>window.resourcesVersion = JSON.stringify(new Date());</script>
+    
+    <script src="/aot/shim.min.js?v=2.1.4"></script>
+    <script src="/aot/zone.min.js?v=0.7.4"></script>
+    <script>window.module = 'aot';</script>
+
+</head>
+<body>
+    <div>
+        <app>
+        <div id="appInitloadingWidget" style="opacity: 0.8;filter:alpha(opacity=80);position:fixed;top:0;width:100%;height:100%;z-index:10000;">
+            <img alt="Loading" src="/assets/images/loading-blue-bak.gif" style="padding-left:50%;padding-top:25%" />
+        </div>
+        </app>
+    </div>
+
+    <!-- update the version for each new deployment -->
+    <script src="/aot/dist/build.js?v=2017.08.27"></script>
+    <script src="/aot/dist/public.build.js?v=2017.08.27"></script>
+    
+</body>
+</html>

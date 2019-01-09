@@ -1,0 +1,31 @@
+﻿{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    //"lib": [ "es2015", "dom" ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "paths": {
+      "core-module/*": [ "core-module/*" ]
+    }
+  },
+  "types": [
+    "core-js",
+    "node"
+    ],
+  "exclude": [
+    "node_modules",
+    "app/*-aot.ts",
+    "public-app/*-aot.ts",
+    "aot"
+  ]
+}
