@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular starter kit</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <script type="text/javascript">
+    window.resourcesVersion = '20180209';
+  </script>
+
+  <script type="text/javascript">
+    function addScript(src) {
+        var script = document.createElement('script');
+        script.async = false;
+        script.type = "text/javascript";
+        script.src = src;
+        document.body.appendChild(script);
+    }
+  </script>
+
+</head>
+<body>
+    <div>
+    @RenderBody()
+    </div>
+  
+    <script type="text/javascript">
+
+    var isUserLoggedIn = localStorage.getItem('isLoggedIn') == 'true'; 
+
+    var appFolder = isUserLoggedIn ? 'dist1' : 'dist';
+
+    addScript(appFolder + '/inline.bundle.js');
+    addScript(appFolder + '/polyfills.bundle.js');
+    addScript(appFolder + '/styles.bundle.js');
+    addScript(appFolder + '/scripts.bundle.js');
+    addScript(appFolder + '/vendor.bundle.js');
+    addScript(appFolder + '/main.bundle.js');
+
+    </script>
+</body>
+</html>

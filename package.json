@@ -1,0 +1,51 @@
+{
+  "name": "ng-website-framework",
+  "version": "5.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build:prod": "ng build --prod --app=public-app && ng build --prod --app=app",
+    "build:dev": "ng build --dev --app=public-app && ng build --dev --app=app",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,  
+  "dependencies": {
+    "@angular/animations": "5.2.4",
+    "@angular/common": "5.2.4",
+    "@angular/compiler": "5.2.4",
+    "@angular/core": "5.2.4",
+    "@angular/forms": "5.2.4",
+    "@angular/http": "5.2.4",
+    "@angular/platform-browser": "5.2.4",
+    "@angular/platform-browser-dynamic": "5.2.4",
+    "@angular/router": "5.2.4",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0",
+    "angular2-logger": "0.6.0",
+    "bootstrap": "4.0.0",
+    "core-js": "2.5.3",
+    "intl": "1.2.5",
+    "moment": "2.20.1",
+    "mydatepicker": "2.6.2",
+    "ng2-bs3-modal": "0.13.0",
+    "ng2-cookies": "1.0.12",
+    "ng2-select": "2.0.0",
+    "ng2-toastr": "4.1.2",
+    "ng2-translate": "5.0.0",
+    "reflect-metadata": "0.1.12",
+    "rxjs": "5.5.6",
+    "systemjs": "0.21.0",
+    "zone.js": "0.8.20"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.6.8",
+    "@angular/compiler-cli": "5.2.4",
+    "@angular/language-service": "5.2.0",
+    "@types/node": "9.4.2",
+    "codelyzer": "4.0.1",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "typescript": "2.5.3"
+  }
+}
