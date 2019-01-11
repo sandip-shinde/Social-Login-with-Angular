@@ -1,1 +1,24 @@
 
+CloudServices/Xpanxion.MicroService.Api.CloudServices.Aws/bin/
+CloudServices/Xpanxion.MicroService.Api.CloudServices.Aws/obj/
+CloudServices/Xpanxion.MicroService.Api.CloudServices.Azure/bin/
+CloudServices/Xpanxion.MicroService.Api.CloudServices.Azure/obj/
+Common/Xpanxion.MicroService.Api.Common.Mapper/bin/
+Common/Xpanxion.MicroService.Api.Common.Mapper/obj/
+Common/Xpanxion.MicroService.Api.Common/bin/
+Common/Xpanxion.MicroService.Api.Common/obj/
+DataAccess/Xpanxion.MicroService.Api.DataAccess.Entities/bin/
+DataAccess/Xpanxion.MicroService.Api.DataAccess.Entities/obj/
+DataAccess/Xpanxion.MicroService.Api.DataAccess.Repository/bin/
+DataAccess/Xpanxion.MicroService.Api.DataAccess.Repository/obj/
+Integration/Xpanxion.MicroService.Api.Contracts/bin/
+Integration/Xpanxion.MicroService.Api.Contracts/obj/
+Integration/Xpanxion.MicroService.Api.RequestHandler/bin/
+Integration/Xpanxion.MicroService.Api.RequestHandler/obj/
+Service/Xpanxion.MicroService.Api/bin/
+Service/Xpanxion.MicroService.Api/obj/
+.vs/Xpanxion.MicroService/v15/Server/sqlite3/storage.ide-wal
+.vs/Xpanxion.MicroService/v15/Server/sqlite3/storage.ide-shm
+.vs/Xpanxion.MicroService/v15/Server/sqlite3/storage.ide
+.vs/Xpanxion.MicroService/v15/Server/sqlite3/db.lock
+.vs/Xpanxion.MicroService/v15/.suo

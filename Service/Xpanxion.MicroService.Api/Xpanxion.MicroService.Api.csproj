@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Xpanxion.MicroService.Api.Common\Xpanxion.MicroService.Api.Common.csproj" />
+    <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Entities\Xpanxion.MicroService.Api.DataAccess.Entities.csproj" />
+    <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Repository\Xpanxion.MicroService.Api.DataAccess.Repository.csproj" />
+    <ProjectReference Include="..\..\Integration\Xpanxion.MicroService.Api.Contracts\Xpanxion.MicroService.Api.Integration.Contracts.csproj" />
+    <ProjectReference Include="..\..\Integration\Xpanxion.MicroService.Api.RequestHandler\Xpanxion.MicroService.Api.Integration.RequestHandler.csproj" />
+  </ItemGroup>
+
+</Project>
