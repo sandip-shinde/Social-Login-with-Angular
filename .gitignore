@@ -22,3 +22,8 @@ Service/Xpanxion.MicroService.Api/obj/
 .vs/Xpanxion.MicroService/v15/Server/sqlite3/storage.ide
 .vs/Xpanxion.MicroService/v15/Server/sqlite3/db.lock
 .vs/Xpanxion.MicroService/v15/.suo
+Integration/Xpanxion.MicroService.Api.RequestValidator/bin/
+.vs/Xpanxion.MicroService/DesignTimeBuild/.dtbcache
+Service/Xpanxion.MicroService.Api.Consumer/bin/
+Service/Xpanxion.MicroService.Api.Consumer/obj/
+Integration/Xpanxion.MicroService.Api.RequestValidator/obj/

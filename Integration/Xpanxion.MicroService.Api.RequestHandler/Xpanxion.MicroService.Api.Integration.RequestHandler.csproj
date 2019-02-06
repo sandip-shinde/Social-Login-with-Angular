@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Repository\Xpanxion.MicroService.Api.DataAccess.Repository.csproj" />
     <ProjectReference Include="..\Xpanxion.MicroService.Api.Contracts\Xpanxion.MicroService.Api.Integration.Contracts.csproj" />
+    <ProjectReference Include="..\Xpanxion.MicroService.Api.RequestValidator\Xpanxion.MicroService.Api.RequestValidator.csproj" />
   </ItemGroup>
 
 </Project>

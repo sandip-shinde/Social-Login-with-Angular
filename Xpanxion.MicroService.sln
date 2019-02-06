@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xpanxion.MicroService.Api.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xpanxion.MicroService.Api.Common.Mapper", "Common\Xpanxion.MicroService.Api.Common.Mapper\Xpanxion.MicroService.Api.Common.Mapper.csproj", "{3C00CDF1-C6E7-414E-8259-39B291E11341}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xpanxion.MicroService.Api.RequestValidator", "Integration\Xpanxion.MicroService.Api.RequestValidator\Xpanxion.MicroService.Api.RequestValidator.csproj", "{1244672A-0F8E-423A-8654-9145F8C05473}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xpanxion.MicroService.Api.Consumer", "Service\Xpanxion.MicroService.Api.Consumer\Xpanxion.MicroService.Api.Consumer.csproj", "{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{3C00CDF1-C6E7-414E-8259-39B291E11341}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C00CDF1-C6E7-414E-8259-39B291E11341}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C00CDF1-C6E7-414E-8259-39B291E11341}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1244672A-0F8E-423A-8654-9145F8C05473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1244672A-0F8E-423A-8654-9145F8C05473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1244672A-0F8E-423A-8654-9145F8C05473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1244672A-0F8E-423A-8654-9145F8C05473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +99,8 @@ Global
 		{6C0A47D1-06AC-4F52-91D8-2F31030211C1} = {CB0E0F46-CF1C-438E-B746-1A48C2320525}
 		{459BF153-854D-4A71-9FC1-3266507DF9F9} = {CB0E0F46-CF1C-438E-B746-1A48C2320525}
 		{3C00CDF1-C6E7-414E-8259-39B291E11341} = {143AAF84-C4FF-4A34-8E5F-36860647E538}
+		{1244672A-0F8E-423A-8654-9145F8C05473} = {0496E486-7F6E-452D-9BA5-76BE6DCF0C6B}
+		{C544A4F7-0EF7-41D3-9DD8-A4B82174B48D} = {95A756B5-3638-4732-88C6-CD423709618E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BFF2BA4-3586-4047-B550-B24325A7560F}

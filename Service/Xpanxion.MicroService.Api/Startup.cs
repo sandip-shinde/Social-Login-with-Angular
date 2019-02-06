@@ -18,6 +18,8 @@ using Xpanxion.MicroService.Api.Integration.Contracts.Request;
 using Xpanxion.MicroService.Api.Integration.Contracts.Response;
 using Xpanxion.MicroService.Api.Integration.RequestHandler;
 using Xpanxion.MicroService.Api.Integration.RequestHandler.Interfaces;
+using Xpanxion.MicroService.Api.RequestValidator;
+using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api
 {
@@ -37,8 +39,8 @@ namespace Xpanxion.MicroService.Api
             this.RegisterSharedDependencies(services);
             this.RegisterDatabaseContext(services);
             this.RegisterDatabaseRepositories(services);
+            this.RegisterRequesValidators(services);
             this.RegisterRequestHandlers(services);
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,14 +62,20 @@ namespace Xpanxion.MicroService.Api
 
         private void RegisterDatabaseContext(IServiceCollection serviceCollection)
         {
+            // TODO : Add database connection strings here 
             serviceCollection.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString(ApiConstants.DBConnection)));
+        }
+
+        private void RegisterRequesValidators(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
+            serviceCollection.AddTransient<IRequestValidator<RegisterUserRequest>, RegisterUserRequestValidator>();
         }
 
         private void RegisterDatabaseRepositories(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IDBRepository<User>, DBRepository<User>>();
             serviceCollection.AddTransient<IDBUnitOfWork, DBUnitOfWork>();
-
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
         }
 
@@ -75,7 +83,6 @@ namespace Xpanxion.MicroService.Api
         {
             serviceCollection.AddTransient<IRequestHandlerProvider, RequestHandlerProvider>();
             serviceCollection.AddTransient<IRequestHandler<RegisterUserRequest, RegisterUserResponse>, RegisterUserRequestHandler>();
-
         }
 
 

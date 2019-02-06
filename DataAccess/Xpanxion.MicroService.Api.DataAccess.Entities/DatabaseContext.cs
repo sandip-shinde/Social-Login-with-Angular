@@ -5,7 +5,7 @@ namespace Xpanxion.MicroService.Api.DataAccess.Entities
 {
     public class DatabaseContext : DbContext
     {
-        protected DatabaseContext()
+        public DatabaseContext(DbContextOptions<DatabaseContext> contextOptions) : base(contextOptions)
         {
         }
         public virtual DbSet<User> User { get; set; }

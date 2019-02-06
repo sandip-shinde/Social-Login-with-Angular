@@ -10,19 +10,20 @@ using Xpanxion.MicroService.Api.Integration.Contracts.Request;
 using Xpanxion.MicroService.Api.Integration.Contracts.Response;
 using Xpanxion.MicroService.Api.Integration.Contracts.Types;
 using Xpanxion.MicroService.Api.Integration.RequestHandler.Interfaces;
+using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api.Integration.RequestHandler
 {
-    public class RegisterUserRequestHandler : BaseRequestHandler, IRequestHandler<RegisterUserRequest, RegisterUserResponse>
+    public class RegisterUserRequestHandler : BaseRequestHandler<RegisterUserRequest,RegisterUserResponse>
     {
         IUserRepository userRepository;
 
-        public RegisterUserRequestHandler(IUserRepository userRepository, IMapper mapper) : base(mapper)
+        public RegisterUserRequestHandler(IUserRepository userRepository, IMapper mapper,IRequestValidator<RegisterUserRequest> requestValidator) : base(mapper, requestValidator)
         {
             this.userRepository = userRepository;
         }
 
-        public Task<RegisterUserResponse> ProcessRequestAsync(RegisterUserRequest request)
+        protected override Task<RegisterUserResponse> HandleRequestAsync(RegisterUserRequest request)
         {
             RegisterUserResponse response = new RegisterUserResponse();
 
