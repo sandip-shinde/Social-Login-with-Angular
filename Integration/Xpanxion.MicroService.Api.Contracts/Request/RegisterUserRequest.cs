@@ -7,6 +7,8 @@ namespace Xpanxion.MicroService.Api.Integration.Contracts.Request
 {
     public class RegisterUserRequest: BaseApiRequest
     {
+        public RegisterUserRequest() { }
+
         [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
         [JsonProperty(PropertyName = "lastName")]

@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Xpanxion.MicroService.Api.Common.Constants;
+using Xpanxion.MicroService.Api.Common.Mapper;
 using Xpanxion.MicroService.Api.DataAccess.Entities;
 using Xpanxion.MicroService.Api.DataAccess.Repository;
 using Xpanxion.MicroService.Api.DataAccess.Repository.Interfaces;
@@ -44,8 +45,17 @@ namespace Xpanxion.MicroService.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IHostingEnvironment env)
         {
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                //context.Database.Migrate();
+                context.Database.EnsureCreated();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,19 +67,20 @@ namespace Xpanxion.MicroService.Api
 
         private void RegisterSharedDependencies(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddAutoMapper();
+            //serviceCollection.AddAutoMapper();
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            serviceCollection.AddSingleton(mapper);
         }
 
         private void RegisterDatabaseContext(IServiceCollection serviceCollection)
         {
             // TODO : Add database connection strings here 
-            serviceCollection.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString(ApiConstants.DBConnection)));
-        }
-
-        private void RegisterRequesValidators(IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
-            serviceCollection.AddTransient<IRequestValidator<RegisterUserRequest>, RegisterUserRequestValidator>();
+            serviceCollection.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString(ApiConstants.ServiceDatabase)));
         }
 
         private void RegisterDatabaseRepositories(IServiceCollection serviceCollection)
@@ -77,6 +88,12 @@ namespace Xpanxion.MicroService.Api
             serviceCollection.AddTransient<IDBRepository<User>, DBRepository<User>>();
             serviceCollection.AddTransient<IDBUnitOfWork, DBUnitOfWork>();
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
+        }
+
+        private void RegisterRequesValidators(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
+            serviceCollection.AddTransient<IRequestValidator<RegisterUserRequest>, RegisterUserRequestValidator>();
         }
 
         private void RegisterRequestHandlers(IServiceCollection serviceCollection)

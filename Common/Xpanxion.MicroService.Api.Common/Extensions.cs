@@ -6,5 +6,6 @@ namespace Xpanxion.MicroService.Api.Common
 {
     public static class Extensions
     {
+
     }
 }

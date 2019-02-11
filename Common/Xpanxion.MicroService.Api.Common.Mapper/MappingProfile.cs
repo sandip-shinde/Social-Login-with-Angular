@@ -9,6 +9,8 @@ namespace Xpanxion.MicroService.Api.Common.Mapper
     {
         public MappingProfile()
         {
+            AllowNullDestinationValues = true;
+
             CreateMap<RegisterUserRequest, User>();
         }
     }

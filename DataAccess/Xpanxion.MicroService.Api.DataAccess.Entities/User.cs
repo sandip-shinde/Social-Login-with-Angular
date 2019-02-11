@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Xpanxion.MicroService.Api.DataAccess.Entities
@@ -12,6 +14,8 @@ namespace Xpanxion.MicroService.Api.DataAccess.Entities
 
         }
 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

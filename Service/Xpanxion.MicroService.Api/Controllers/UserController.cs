@@ -19,7 +19,7 @@ namespace Xpanxion.MicroService.Api.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<HttpResponseMessage> Register(RegisterUserRequest request)
+        public async Task<HttpResponseMessage> Register([FromBody]RegisterUserRequest request)
         {
             var result = await this.RequestHandler.ProcessRequestAsync<RegisterUserRequest, RegisterUserResponse>(request);
 

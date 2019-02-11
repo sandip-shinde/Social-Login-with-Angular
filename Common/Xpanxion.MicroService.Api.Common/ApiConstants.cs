@@ -6,6 +6,6 @@ namespace Xpanxion.MicroService.Api.Common.Constants
 {
     public static class ApiConstants
     {
-        public const string DBConnection = "DBConnection";
+        public const string ServiceDatabase = "ServiceDatabase";
     }
 }

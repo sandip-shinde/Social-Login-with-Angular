@@ -27,7 +27,7 @@ namespace Xpanxion.MicroService.Api.Integration.RequestHandler
         {
             RegisterUserResponse response = new RegisterUserResponse();
 
-            if (this.userRepository.RegisterNewUser(this.Mapper.Map<User>(request)))
+            if (this.userRepository.RegisterNewUser(this.Mapper.Map<RegisterUserRequest,User>(request)))
                 response.Error = null; 
             else
                 response.Error = new ApiError(ErrorCode.UserAlreadyExists);

@@ -6,6 +6,7 @@ namespace Xpanxion.MicroService.Api.Common.Enums
 {
     public enum ErrorCode
     {
-        UserAlreadyExists = 1
+        UserAlreadyExists = 1,
+        InvalidRequest = 2
     }
 }

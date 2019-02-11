@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Xpanxion.MicroService.Api.Common.Mapper\Xpanxion.MicroService.Api.Common.Mapper.csproj" />
     <ProjectReference Include="..\..\Common\Xpanxion.MicroService.Api.Common\Xpanxion.MicroService.Api.Common.csproj" />
     <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Entities\Xpanxion.MicroService.Api.DataAccess.Entities.csproj" />
     <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Repository\Xpanxion.MicroService.Api.DataAccess.Repository.csproj" />
