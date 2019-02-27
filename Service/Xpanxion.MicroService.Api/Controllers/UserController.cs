@@ -19,16 +19,19 @@ namespace Xpanxion.MicroService.Api.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<HttpResponseMessage> Register([FromBody]RegisterUserRequest request)
+        public async Task<IActionResult> Register([FromBody]UserRegisterRequest request)
         {
-            var result = await this.RequestHandler.ProcessRequestAsync<RegisterUserRequest, RegisterUserResponse>(request);
+            var result = await this.RequestHandler.ProcessRequestAsync<UserRegisterRequest, UserRegisterResponse>(request);
 
-            if (result.IsSuccess)
-                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-            else
-                return new HttpResponseMessage(System.Net.HttpStatusCode.InternalServerError);
-
+            return Ok(result);    
         }
 
+        [HttpPost]
+        [Route("GetByName")]
+        public IActionResult Get([FromBody]UserGetRequest request)
+        {
+            return Ok(this.RequestHandler.ProcessRequestAsync<UserGetRequest, UserGetResponse>(request).Result);
+            
+        }
     }
 }

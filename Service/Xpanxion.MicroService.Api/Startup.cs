@@ -93,13 +93,15 @@ namespace Xpanxion.MicroService.Api
         private void RegisterRequesValidators(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
-            serviceCollection.AddTransient<IRequestValidator<RegisterUserRequest>, RegisterUserRequestValidator>();
+            serviceCollection.AddTransient<IRequestValidator<UserRegisterRequest>, UserRegisterRequestValidator>();
+            serviceCollection.AddTransient<IRequestValidator<UserGetRequest>, UserGetRequestValidator>();
         }
 
         private void RegisterRequestHandlers(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IRequestHandlerProvider, RequestHandlerProvider>();
-            serviceCollection.AddTransient<IRequestHandler<RegisterUserRequest, RegisterUserResponse>, RegisterUserRequestHandler>();
+            serviceCollection.AddTransient<IRequestHandler<UserRegisterRequest, UserRegisterResponse>, UserRegisterRequestHandler>();
+            serviceCollection.AddTransient<IRequestHandler<UserGetRequest, UserGetResponse>, UserGetRequestHandler>();
         }
 
 

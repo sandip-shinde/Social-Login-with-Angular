@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xpanxion.MicroService.Api.Integration.Contracts.Types;
 using Xpanxion.MicroService.Api.Integration.RequestHandler.Interfaces;
+using Xpanxion.MicroService.Api.RequestValidator;
 using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api.Integration.RequestHandler
@@ -43,12 +44,18 @@ namespace Xpanxion.MicroService.Api.Integration.RequestHandler
 
         private void ValidateRequest(TRequest request)
         {
-            ValidationResult result = ((IRequestValidator<TRequest>)this.Validator).Validate(request);
-
-            if (!result.IsValid)
+            ValidationResult fluentValidationResult = request.DoFluentValidations();
+            if (fluentValidationResult!= null && !fluentValidationResult.IsValid)
             {
-                throw new Exception(result.Error.Message);
+                throw new Exception(fluentValidationResult.Error.Message);
             }
+
+            ValidationResult contractValidationResult = ((IRequestValidator<TRequest>)this.Validator).Validate(request);
+            if (contractValidationResult != null && !contractValidationResult.IsValid)
+            {
+                throw new Exception(contractValidationResult.Error.Message);
+            }
+
         }
 
     }

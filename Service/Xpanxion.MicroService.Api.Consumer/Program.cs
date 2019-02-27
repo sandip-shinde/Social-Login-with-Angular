@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using Xpanxion.MicroService.Api.Integration.Contracts.Request;
+using Xpanxion.MicroService.Api.Integration.Contracts.Response;
 
 namespace Xpanxion.MicroService.Api.Consumer
 {
@@ -10,7 +11,17 @@ namespace Xpanxion.MicroService.Api.Consumer
         {
             Console.WriteLine("Hello World!");
 
-            string request = JsonConvert.SerializeObject(new RegisterUserRequest
+            //RegisterUserAPI();
+
+            GetUserAPI();
+
+            Console.ReadKey();
+        }
+
+
+        private static void RegisterUserAPI()
+        {
+            string request = JsonConvert.SerializeObject(new UserRegisterRequest
             {
                 UserName = "TestUserName",
                 FirstName = "TestFirstName",
@@ -18,18 +29,25 @@ namespace Xpanxion.MicroService.Api.Consumer
                 Address = "TestAddress",
                 EmailAddress = "test@hotmail.com",
                 Password = "test@123",
-                PrimaryContact = "1234567891",
+                PrimaryContact = "12345678915",
                 SecondaryContact = "5674321987",
                 Token = Guid.NewGuid().ToString(),
             });
 
             ApiProxy apiProxy = new ApiProxy();
-            apiProxy.PostAsyncEncodedContent("user/register", request).ContinueWith(result =>
+            var response = JsonConvert.DeserializeObject<UserRegisterResponse>(apiProxy.PostAsyncEncodedContent("user/register", request).Result.Content.ReadAsStringAsync().Result);
+        }
+
+        private static void GetUserAPI()
+        {
+            string request = JsonConvert.SerializeObject(new UserGetRequest
             {
-                Console.WriteLine(result);
+                UserName = "TestUserName",
+                Token = Guid.NewGuid().ToString(),
             });
 
-            Console.ReadKey();
+            ApiProxy apiProxy = new ApiProxy();
+            var response =  JsonConvert.DeserializeObject<UserGetResponse>(apiProxy.PostAsyncEncodedContent("user/getbyname", request).Result.Content.ReadAsStringAsync().Result);
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Xpanxion.MicroService.Api.Integration.Contracts.Response
 {
-    public class RegisterUserResponse: BaseApiResponse
+    public class UserRegisterResponse : BaseApiResponse
     {
-        public RegisterUserResponse()
+        public UserRegisterResponse()
         {
 
         }

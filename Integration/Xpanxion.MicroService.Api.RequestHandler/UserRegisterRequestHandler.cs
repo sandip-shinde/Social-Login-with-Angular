@@ -14,25 +14,25 @@ using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api.Integration.RequestHandler
 {
-    public class RegisterUserRequestHandler : BaseRequestHandler<RegisterUserRequest,RegisterUserResponse>
+    public class UserRegisterRequestHandler : BaseRequestHandler<UserRegisterRequest,UserRegisterResponse>
     {
         IUserRepository userRepository;
 
-        public RegisterUserRequestHandler(IUserRepository userRepository, IMapper mapper,IRequestValidator<RegisterUserRequest> requestValidator) : base(mapper, requestValidator)
+        public UserRegisterRequestHandler(IUserRepository userRepository, IMapper mapper,IRequestValidator<UserRegisterRequest> requestValidator) : base(mapper, requestValidator)
         {
             this.userRepository = userRepository;
         }
 
-        protected override Task<RegisterUserResponse> HandleRequestAsync(RegisterUserRequest request)
+        protected override Task<UserRegisterResponse> HandleRequestAsync(UserRegisterRequest request)
         {
-            RegisterUserResponse response = new RegisterUserResponse();
+            UserRegisterResponse response = new UserRegisterResponse();
 
-            if (this.userRepository.RegisterNewUser(this.Mapper.Map<RegisterUserRequest,User>(request)))
+            if (this.userRepository.RegisterNewUser(this.Mapper.Map<UserRegisterRequest,User>(request)))
                 response.Error = null; 
             else
                 response.Error = new ApiError(ErrorCode.UserAlreadyExists);
 
-            return Task.FromResult<RegisterUserResponse>(response);
+            return Task.FromResult<UserRegisterResponse>(response);
         }
     }
 }
