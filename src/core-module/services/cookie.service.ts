@@ -5,12 +5,7 @@ import { CookieService as Cookie } from 'ngx-cookie-service';
 
 import { LoggerService } from './logger.service';
 
-export class EnvironmentConfig {
-    environmentName: string;
-    apiTokenUrl: string;
-    appUrl: string;
-    domain: string;
-}
+import { EnvironmentConfig } from '../infrastructure/utility.service';
 
  @Injectable()
 export class CookieService {

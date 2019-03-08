@@ -10,10 +10,7 @@ import {
 } from '../infrastructure/index';
 
 import {
-    ErrorCode,
-    ToastrCode,
     ValidationService,
-    ToastrService
 } from '@core';
 
 @Directive({
@@ -22,7 +19,6 @@ import {
 export class RestrictInput {
 
     _regx: RegExp;
-    toastrCode: ToastrCode;
     _backSpaceKey: number = 8;
     _tabKey: number = 9;
     _deleteKey: number = 16;
@@ -31,7 +27,6 @@ export class RestrictInput {
 
     @Input('restrict_input') regExType: string;
     constructor(private el: ElementRef
-        , private _toastrService: ToastrService
         , private _validationService: ValidationService
     ) {
     }

@@ -28,8 +28,6 @@
               "src/assets/styles/bootstrap.min.css",
               "src/assets/styles/font-awesome.min.css",
               "src/assets/styles/spinner.component.css",
-              "src/assets/styles/toastr.component.css",
-              "src/assets/styles/ng2-select.css",
               "src/assets/styles/public.component.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
@@ -100,8 +98,6 @@
               "src/assets/styles/bootstrap.min.css",
               "src/assets/styles/font-awesome.min.css",
               "src/assets/styles/spinner.component.css",
-              "src/assets/styles/toastr.component.css",
-              "src/assets/styles/ng2-select.css",
               "src/assets/styles/public.component.css"
             ],
             "assets": [

@@ -45,8 +45,7 @@ export class AuthGuardService implements CanActivate {
         || url.indexOf(Constants.businessExceptions.SessionKilled) !== -1) {
             isError = true;
             errorCode = ErrorCode.UserSessionExpired;
-        }
-        else if (url.indexOf(Constants.businessExceptions.ErrorCode) !== -1) {
+        } else if (url.indexOf(Constants.businessExceptions.ErrorCode) !== -1) {
             isError = true;
             errorCode = url.split('=')[1];
         }

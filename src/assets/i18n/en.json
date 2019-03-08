@@ -48,18 +48,9 @@
     }
   },
   "Toastr": {
-    "Fatal": {
-      "message": "Error occurred while processing your request. Please try again later or contact customer support team.",
-      "messageType": "Error"
-    },
-    "EmptyEmailAddress": {
-      "message": "Please enter Email Address.",
-      "messageType": "Warning"
-    },
-    "EmptyPassword": {
-      "message": "Please enter Password.",
-      "messageType": "Warning"
-    }  
+    "Fatal": "Error occurred while processing your request. Please try again later or contact customer support team.",    
+    "EmptyEmailAddress": "Please enter Email Address.",
+    "EmptyPassword": "Please enter Password."       
   }
 }
 }

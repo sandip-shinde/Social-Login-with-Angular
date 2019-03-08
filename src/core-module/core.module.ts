@@ -20,17 +20,10 @@ import {
 } from '@angular/http';
 
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-
 import { CookieService } from 'ngx-cookie-service';
-
-import {
-    ToastModule,
-    ToastOptions
-} from 'ng2-toastr/ng2-toastr';
-
-import {
-    DialogModule
-} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import {
     LoggingErrorHandlerOptions,
@@ -46,9 +39,7 @@ import {
 } from './extensions/index';
 
 import {
-    Constants,
     ConfigurationSettings,
-    ToastrOptions,
     EnvironmentConfig,
     UtilityService,
     ValidationService
@@ -59,24 +50,10 @@ import { LoggerService } from './services/logger.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { SpinnerService } from './spinner/spinner.service';
-
-import {
-    ToastrComponent,
-    ToastrMessageHelperService,
-    ToastrService
-} from './toastr/index';
+import { ToastrService } from './services/toastr.service';
 
 export function httpServiceFactory(backend: XHRBackend, options: RequestOptions, utilityService: UtilityService, authService: AuthService) {
     return new HttpService(backend, options, utilityService, authService);
-}
-
-export class CustomToastOptions extends ToastOptions {
-    animate = 'fade';
-    positionClass = 'toast-top-full-width';
-    dismiss = 'click';
-    maxShown = 1;
-    showCloseButton = true;
-    newestOnTop = true;
 }
 
 @NgModule({
@@ -92,25 +69,22 @@ export class CustomToastOptions extends ToastOptions {
                 serverLogLevel: NgxLoggerLevel.ERROR
             }),
         DialogModule,
-        ToastModule.forRoot()
+        ToastModule
     ],
     declarations: [
         GlobalErrorDialogComponent,
-        ToastrComponent,
         PageNotFoundComponent
     ],
     exports: [
         GlobalErrorDialogComponent,
-        ToastrComponent,
         PageNotFoundComponent
     ],
     providers: [
         LoggerService,
+        MessageService,
+        ToastrService,
         CookieService,
         UtilityService,
-        { provide: ToastOptions, useClass: CustomToastOptions },
-        ToastrMessageHelperService,
-        ToastrService,
         ValidationService,
         AuthService,
         SpinnerService,

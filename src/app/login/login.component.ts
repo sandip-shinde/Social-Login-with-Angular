@@ -64,10 +64,10 @@ export class LoginComponent implements OnInit {
         this.model.isAuthInitiated = true;
         if (!this.model.emailAddress) {
             this.model.isAuthInitiated = false;
-            this._toastrService.showToastr(ToastrCode.EmptyEmailAddress, null);
+            this._toastrService.showError(ToastrCode.EmptyEmailAddress);
         } else if (!this.model.password) {
             this.model.isAuthInitiated = false;
-            this._toastrService.showToastr(ToastrCode.EmptyPassword, null);
+            this._toastrService.showError(ToastrCode.EmptyPassword);
         } else {
             this.model.isAuthInitiated = true;
             this._loginService.logOn({ UserName: this.model.emailAddress, Password: this.model.password })

@@ -17,9 +17,8 @@ import {
 
 // plugins
 
-import {
-    DialogModule
-} from 'primeng/dialog';
+import { DialogModule } from 'primeng/dialog';
+import {ToastModule} from 'primeng/toast';
 
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -63,6 +62,7 @@ export function createTranslateLoader(http: HttpClient) {
         RouterModule,
 
         DialogModule,
+        ToastModule,
         NgbCarouselModule,
         TranslateModule.forRoot({
             loader: {
@@ -102,6 +102,7 @@ export function createTranslateLoader(http: HttpClient) {
 
         // plugins
         DialogModule,
+        ToastModule,
         NgbCarouselModule,
         TranslateModule,
 

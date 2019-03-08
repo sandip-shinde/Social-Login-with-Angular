@@ -13,7 +13,7 @@ import {
     ToastrMessageType
 } from '../extensions/http-error.model';
 
-import { ToastrService } from '../toastr/index';
+import { ToastrService } from '../services/index';
 
 @Injectable()
 export class GlobalErrorLoggingService {
@@ -27,11 +27,12 @@ export class GlobalErrorLoggingService {
     _notificationType: ErroNotificationType;
     isHandledError = true;
 
-    showErrorDialog: (errorDialogTitle: string, customErrorMessage: string, primaryButtonText: string, isLogoutOnPrimaryButtonEvent: boolean, isShowSecondaryButton: boolean, secondaryButtonText: string) => void;
+    showErrorDialog: (errorDialogTitle: string, customErrorMessage: string, primaryButtonText: string
+        , isLogoutOnPrimaryButtonEvent: boolean, isShowSecondaryButton: boolean, secondaryButtonText: string) => void;
 
     constructor(private _logger: LoggerService,
         private _translate: TranslateService,
-        private _globalToastrService: ToastrService
+        private _toastrService: ToastrService
     ) {
         this._logger.info('GlobalErrorLoggingService : constructor ');
     }
@@ -79,12 +80,13 @@ export class GlobalErrorLoggingService {
         }
 
         if (this._notificationType === ErroNotificationType.Dialog) {
-            this.showErrorDialog(this._errorDialogTitle, this._errorDialogMessage, this._primaryButtton, this._isLogoutonPrimaryButton, this._isShowSecondaryButton, this._secondaryButton);
+            this.showErrorDialog(this._errorDialogTitle, this._errorDialogMessage, this._primaryButtton
+                , this._isLogoutonPrimaryButton, this._isShowSecondaryButton, this._secondaryButton);
         } else if (this._notificationType === ErroNotificationType.Toaster) {
             if (this.isHandledError) {
-                this._globalToastrService.showErrorToastr(error.code, error.messageParams);
+                this._toastrService.showError(error.code);
             } else {
-                this._globalToastrService.showErrorToastr(ErrorCode.Fatal, null);
+                this._toastrService.showError(ErrorCode.Fatal);
             }
         }
     }
