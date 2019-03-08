@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -17,30 +18,31 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@core":[
+      "@core": [
         "core-module/index"
       ],
-      "@core/*":[
+      "@core/*": [
         "core-module/*"
       ],
-      "@global":[
+      "@global": [
         "app/global-module/index"
       ],
-      "@global/*":[
+      "@global/*": [
         "app/global-module/*"
       ],
-      "@shared":[
+      "@shared": [
         "app/shared-module/index"
       ],
-      "@shared/*":[
+      "@shared/*": [
         "app/shared-module/*"
       ],
-      "@env":[
+      "@env": [
         "environments/environment"
       ]
-    }
+    },
+    "module": "es2015"
   },
-  "include" : [
+  "include": [
     "src/**/*.ts"
   ]
 }
