@@ -1,2 +1,2 @@
 ﻿export * from './restrict-input.directive';
-export * from './disable-controls.directive';
+export * from './enable-disable-controls.directive';

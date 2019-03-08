@@ -1,12 +1,10 @@
-﻿<bs-modal [animation]="true" [keyboard]="true" [backdrop]="true" (onClose)="logout()" (onOpen)="initDialogData()" #modal>
-    <bs-modal-header>
+﻿<p-dialog [(visible)]="_displayModal" [modal]="true" (onHide)="logout()">
+    <p-header>
         <h4 class="modal-title" [innerText]="_dialogTitle"></h4>
-    </bs-modal-header>
-    <bs-modal-body>
-        <p [innerText]="_message"></p>
-    </bs-modal-body>
-    <bs-modal-footer>
-        <button type="button" class="btn btn-default" (click)="modal.dismiss()" *ngIf="_isShowSecondaryButton == true" [innerText]="_secondaryButtonText" ></button>
-        <button type="button" class="btn btn-primary" autofocus (click)="modal.close()"  [innerText]="_primaryButtonText"></button>
-    </bs-modal-footer>
-</bs-modal>
+    </p-header>
+    <p [innerText]="_message"></p>
+    <p-footer>
+        <button type="button" class="btn btn-default" (click)="_displayModal=false" *ngIf="_isShowSecondaryButton == true" [innerText]="_secondaryButtonText" ></button>
+        <button type="button" class="btn btn-primary" autofocus (click)="_displayModal=false"  [innerText]="_primaryButtonText"></button>
+    </p-footer>
+</p-dialog>

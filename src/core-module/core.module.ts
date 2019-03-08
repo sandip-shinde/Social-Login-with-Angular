@@ -28,7 +28,9 @@ import {
     ToastOptions
 } from 'ng2-toastr/ng2-toastr';
 
-import { BsModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import {
+    DialogModule
+} from 'primeng/dialog';
 
 import {
     LoggingErrorHandlerOptions,
@@ -89,7 +91,7 @@ export class CustomToastOptions extends ToastOptions {
                 level: NgxLoggerLevel.DEBUG,
                 serverLogLevel: NgxLoggerLevel.ERROR
             }),
-        BsModalModule,
+        DialogModule,
         ToastModule.forRoot()
     ],
     declarations: [

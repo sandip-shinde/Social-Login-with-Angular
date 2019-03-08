@@ -10,7 +10,6 @@
 
 import { Router } from '@angular/router';
 import { LoggerService } from '@core';
-import { BsModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
     moduleId: module.id,
@@ -20,9 +19,10 @@ import { BsModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
     encapsulation: ViewEncapsulation.None
 })
 export class LogoutConfirmationComponent {
-    @ViewChild('modal') modalComp: BsModalComponent;
-    @ViewChild('logoutContainer') container: ElementRef;
+
     @Output() onLogoutConfirmation = new EventEmitter<boolean>();
+
+    _displayModal = false;
 
     constructor(
         private router: Router,
@@ -33,11 +33,12 @@ export class LogoutConfirmationComponent {
 
     showConfirmation() {
         this._logger.info('LogoutConfirmationComponent : showConfirmation ');
-        this.modalComp.open();
+        this._displayModal = true;
     }
 
     closeAndInstructLogoutToParent() {
         this._logger.info('LogoutConfirmationComponent : closeAndInstructLogoutToParent ');
+        this._displayModal = false;
         this.onLogoutConfirmation.emit(true);
     }
 
