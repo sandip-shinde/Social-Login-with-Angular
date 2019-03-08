@@ -1,6 +1,4 @@
 ﻿import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { LoggerService } from '../services/logger.service';
 
 
@@ -47,25 +45,6 @@ export class UtilityService {
 
     public redirectToURL(href: string) {
         window.location.href = href;
-    }
-
-    public getCookie(cookieName: string): string {
-        return Cookie.get(this.environmentName + cookieName);
-    }
-
-    public setCookie(cookieName: string, value: string): void {
-        document.cookie = this.environmentName + cookieName + "=" + value + ";domain=.client.com; path = /";        
-    }
-    
-    public deleteCookie(cookieName: string): void {
-        Cookie.delete(this.environmentName + cookieName);
-    }
-
-    public doesCookieExists(cookieName: string): boolean {
-        if (Cookie.get(this.environmentName + cookieName))
-            return true;
-
-        return false;
     }
 
     public hideAppLoadingWidget(): void {

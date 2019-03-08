@@ -8,7 +8,6 @@
 
 import { Router } from '@angular/router';
 import { LoggerService } from '../services/logger.service';
-import { BsModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { GlobalErrorLoggingService } from './global-error-logging.service';
 
 @Component({
@@ -19,8 +18,7 @@ import { GlobalErrorLoggingService } from './global-error-logging.service';
 })
 export class GlobalErrorDialogComponent {
 
-    @ViewChild('modal')
-    _modal: BsModalComponent;
+    _displayModal = false;
     _dialogTitle: string;
     _message: string;
     _isShowSecondaryButton: boolean;
@@ -38,7 +36,8 @@ export class GlobalErrorDialogComponent {
     }
 
 
-    showErrorDialog(errorDialogTitle: string, customErrorMessage: string, primaryButtonText: string, isLogoutOnPrimaryButtonEvent: boolean, isShowSecondaryButton: boolean, secondaryButtonText: string) {
+    showErrorDialog(errorDialogTitle: string, customErrorMessage: string, primaryButtonText: string
+        , isLogoutOnPrimaryButtonEvent: boolean, isShowSecondaryButton: boolean, secondaryButtonText: string) {
         this._logger.info('GlobalErrorDialogComponent : showErrorDialog ');
         this._dialogTitle = errorDialogTitle;
         this._message = customErrorMessage;
@@ -46,7 +45,7 @@ export class GlobalErrorDialogComponent {
         this._primaryButtonText = primaryButtonText;
         this._secondaryButtonText = secondaryButtonText;
         this._isLogoutOnPrimaryButtonEvent = isLogoutOnPrimaryButtonEvent;
-        this._modal.open();
+        this._displayModal = true;
     }
 
     logout() {

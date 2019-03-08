@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 import {
@@ -16,8 +17,10 @@ import {
 
 // plugins
 
-import { BsModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { SelectModule } from 'ng2-select';
+import {
+    DialogModule
+} from 'primeng/dialog';
+
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -25,7 +28,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {
     RestrictInput,
-    DisableControls
+    EnableDisableControls
 } from './directive/index';
 
 import { ConfigurationSettings } from './infrastructure/index';
@@ -55,11 +58,11 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         RouterModule,
 
-        BsModalModule,
-        SelectModule,
+        DialogModule,
         NgbCarouselModule,
         TranslateModule.forRoot({
             loader: {
@@ -78,7 +81,7 @@ export function createTranslateLoader(http: HttpClient) {
 
         // directives
         RestrictInput,
-        DisableControls,
+        EnableDisableControls,
 
         // components
         NavigationComponent,
@@ -93,12 +96,12 @@ export function createTranslateLoader(http: HttpClient) {
     exports: [
         // Angular modules
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         RouterModule,
 
         // plugins
-        BsModalModule,
-        SelectModule,
+        DialogModule,
         NgbCarouselModule,
         TranslateModule,
 
@@ -110,7 +113,7 @@ export function createTranslateLoader(http: HttpClient) {
 
         // directives
         RestrictInput,
-        DisableControls,
+        EnableDisableControls,
 
         // shared components
         NavigationComponent,
