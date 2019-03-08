@@ -2,8 +2,11 @@
     Component,
     Input
 } from '@angular/core';
-import { SpinnerService } from '../../../core-module/index';
-import { Logger         } from 'angular2-logger/core';
+
+import {
+    SpinnerService,
+    LoggerService
+} from '@core';
 
 @Component({
     moduleId: module.id,
@@ -16,11 +19,11 @@ export class SpinnerComponent {
 
     public constructor
         (_spinner: SpinnerService,
-        private _logger : Logger
+        private _logger: LoggerService
     ) {
-        this._logger.info("SpinnerComponent : constructor");
+        this._logger.info('SpinnerComponent : constructor');
         _spinner.status.subscribe((status: boolean) => {
-            this._logger.info("SpinnerComponent : subscribe => Status : " + status);
+            this._logger.info('SpinnerComponent : subscribe => Status : ' + status);
             this.active = status;
         });
     }

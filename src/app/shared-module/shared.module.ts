@@ -4,6 +4,7 @@
 } from '@angular/core';
 
 import { Http } from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -19,13 +20,8 @@ import { BsModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 import { SelectModule } from 'ng2-select';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {
-    TranslateModule,
-    TranslateLoader,
-    TranslateStaticLoader
-} from 'ng2-translate';
-
-import { MyDatePickerModule } from 'mydatepicker';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import {
     RestrictInput,
@@ -52,8 +48,8 @@ import {
 
 declare var resourcesVersion: any;
 
-export function translateLoaderFactory(http: Http) {
-    return new TranslateStaticLoader(http, '/assets/resources', '.json?v=' + resourcesVersion);
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json?v=' + resourcesVersion);
 }
 
 @NgModule({
@@ -66,11 +62,12 @@ export function translateLoaderFactory(http: Http) {
         SelectModule,
         NgbCarouselModule,
         TranslateModule.forRoot({
-            provide: TranslateLoader,
-            useFactory: translateLoaderFactory,
-            deps: [Http]
-        }),
-        MyDatePickerModule
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        })
     ],
     declarations: [
         // pipes
@@ -104,7 +101,6 @@ export function translateLoaderFactory(http: Http) {
         SelectModule,
         NgbCarouselModule,
         TranslateModule,
-        MyDatePickerModule,
 
         // pipes
         DatexPipe,

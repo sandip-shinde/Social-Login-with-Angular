@@ -4,7 +4,6 @@
 } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
-import { Logger } from 'angular2-logger/core';
 
 import { Constants } from '../infrastructure/constants';
 
@@ -13,10 +12,11 @@ import { SharedData } from './index';
 import {
     AuthService,
     HttpService,
-    UtilityService
-} from '../../../core-module/index';
+    UtilityService,
+    LoggerService
+} from '@core';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@env';
 
 @Injectable()
 export class SharedDataService {
@@ -25,7 +25,7 @@ export class SharedDataService {
     public isDisableUIElements: boolean;
 
     constructor(
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _authService: AuthService,
         private _https: HttpService,
         private _utilityService: UtilityService

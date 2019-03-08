@@ -4,17 +4,17 @@
     ViewEncapsulation,
     Output,
     EventEmitter
-} from  '@angular/core';
+} from '@angular/core';
 
-import { Router } from  '@angular/router';
-import { Logger } from 'angular2-logger/core';
+import { Router } from '@angular/router';
+import { LoggerService } from '../services/logger.service';
 import { BsModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { GlobalErrorLoggingService } from "./index";
+import { GlobalErrorLoggingService } from './global-error-logging.service';
 
 @Component({
     moduleId: module.id,
     selector: 'error-dialog',
-    templateUrl: 'global-error-dialog.component.html',    
+    templateUrl: 'global-error-dialog.component.html',
     encapsulation: ViewEncapsulation.None
 })
 export class GlobalErrorDialogComponent {
@@ -30,16 +30,16 @@ export class GlobalErrorDialogComponent {
 
     constructor(
         private router: Router,
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _globalErrorLoggingService: GlobalErrorLoggingService
     ) {
-        this._logger.info("GlobalErrorDialogComponent : ngOnInit ");
+        this._logger.info('GlobalErrorDialogComponent : ngOnInit ');
         _globalErrorLoggingService.showErrorDialog = this.showErrorDialog.bind(this);
     }
 
 
     showErrorDialog(errorDialogTitle: string, customErrorMessage: string, primaryButtonText: string, isLogoutOnPrimaryButtonEvent: boolean, isShowSecondaryButton: boolean, secondaryButtonText: string) {
-        this._logger.info("GlobalErrorDialogComponent : showErrorDialog ");
+        this._logger.info('GlobalErrorDialogComponent : showErrorDialog ');
         this._dialogTitle = errorDialogTitle;
         this._message = customErrorMessage;
         this._isShowSecondaryButton = isShowSecondaryButton;
@@ -50,10 +50,10 @@ export class GlobalErrorDialogComponent {
     }
 
     logout() {
-        this._logger.info("GlobalErrorDialogComponent : logout ");
+        this._logger.info('GlobalErrorDialogComponent : logout ');
     }
 
     initDialogData() {
-        this._logger.info("GlobalErrorDialogComponent : initDialogData ");
+        this._logger.info('GlobalErrorDialogComponent : initDialogData ');
     }
 }

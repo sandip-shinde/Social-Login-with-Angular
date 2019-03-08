@@ -5,11 +5,11 @@ import {
     RouterModule
 } from '@angular/router';
 
-import { PageNotFoundComponent } from '../core-module/index';
+import { PageNotFoundComponent } from '@core';
 
-import { AuthGuardService } from './global-module/index';
+import { AuthGuardService } from '@global';
 
-import { Constants } from './shared-module/index';
+import { Constants } from '@shared';
 
 import { ProductComponent } from './shop-module/product/product.component';
 import { OfferComponent } from './shop-module/offer/offer.component';

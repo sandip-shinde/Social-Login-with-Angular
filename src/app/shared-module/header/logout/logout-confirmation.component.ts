@@ -9,7 +9,7 @@
 } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { Logger } from 'angular2-logger/core';
+import { LoggerService } from '@core';
 import { BsModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
@@ -26,18 +26,18 @@ export class LogoutConfirmationComponent {
 
     constructor(
         private router: Router,
-        private _logger: Logger
+        private _logger: LoggerService
     ) {
-        this._logger.info("LogoutConfirmationComponent : ngOnInit ");
+        this._logger.info('LogoutConfirmationComponent : ngOnInit ');
     }
 
     showConfirmation() {
-        this._logger.info("LogoutConfirmationComponent : showConfirmation ");
+        this._logger.info('LogoutConfirmationComponent : showConfirmation ');
         this.modalComp.open();
     }
 
     closeAndInstructLogoutToParent() {
-        this._logger.info("LogoutConfirmationComponent : closeAndInstructLogoutToParent ");
+        this._logger.info('LogoutConfirmationComponent : closeAndInstructLogoutToParent ');
         this.onLogoutConfirmation.emit(true);
     }
 

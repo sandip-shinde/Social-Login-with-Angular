@@ -2,8 +2,8 @@ import {
     Component
     , OnInit
   } from '@angular/core';
-import { Logger } from 'angular2-logger/core';
-import { TranslateService} from 'ng2-translate';
+import { LoggerService } from '@core';
+import {TranslateService} from '@ngx-translate/core';
 
 import {
     Event as RouterEvent,
@@ -20,11 +20,11 @@ import {
 import {
     ConfigurationSettings,
     Constants
-} from './shared-module/index';
+} from '@shared';
 
 import {
     AuthService
-} from '../core-module/index';
+} from '@core';
 
 @Component({
     moduleId: module.id,
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     isUserLoggedIn = false;
 
     constructor(
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _translate: TranslateService,
         private _router: Router,
         private _authService: AuthService,
@@ -45,8 +45,6 @@ export class AppComponent implements OnInit {
     ) {
 
         this._logger.info('AppComponent : constructor ');
-
-        this._logger.level = ConfigurationSettings.LogLevel;
 
         this._logger.info('"AppComponent : constructor => language configured');
 

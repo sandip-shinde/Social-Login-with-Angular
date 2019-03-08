@@ -8,7 +8,7 @@
 } from '@angular/core';
 
 import { TranslateService } from 'ng2-translate';
-import { Logger } from 'angular2-logger/core';
+import { LoggerService } from '@core';
 import {
     NotificationService,
     SharedDataService,
@@ -29,9 +29,9 @@ export class DisableControls implements AfterViewInit {
         private _notificationService: NotificationService,
         private _sharedDataService: SharedDataService,
         private _translateService: TranslateService,
-        private _logger: Logger,
+        private _logger: LoggerService,
     ) {
-        this._logger.info("DisableControls : constructor ");
+        this._logger.info('DisableControls : constructor ');
         this.parentElement = el;
 
         this._translateService.get('SHARED.DISABLECONTROLS.ModalHeader').subscribe((resource: any) => {
@@ -44,7 +44,7 @@ export class DisableControls implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this._logger.info("DisableControls : ngAfterViewInit ");
+        this._logger.info('DisableControls : ngAfterViewInit ');
         this._notificationService.disableUINotification.subscribe(() => {
             this.disableAllElements(this.parentElement.nativeElement);
         });
@@ -52,25 +52,22 @@ export class DisableControls implements AfterViewInit {
 
 
     private disableAllElements(currentElement: any): void {
-        this._logger.info("DisableControls : disableAllElements ");
-        if (currentElement != undefined && currentElement.childElementCount != undefined && currentElement.childElementCount > 0)
-        {
-            for (var i = 0; i < currentElement.childElementCount; i++)
-            {
-                if (currentElement.children[i].tagName != this.modelHeader)
-                {
-                    if (currentElement.children[i].innerText != this.reset && currentElement.children[i].value != this.reset)
-                    {
-                        if (this._sharedDataService.isDisableUIElements == true)
-                            currentElement.children[i].setAttribute("disabled", "true");
-                        else
-                            currentElement.children[i].removeAttribute("disabled");
-                    }
-                    else {
-                        if (this._sharedDataService.isDisableUIElements == true)
-                            currentElement.children[i].setAttribute("style", "visibility: hidden");
-                        else
-                            currentElement.children[i].setAttribute("style", "visibility: visible");
+        this._logger.info('DisableControls : disableAllElements ');
+        if (currentElement !== undefined && currentElement.childElementCount !== undefined && currentElement.childElementCount > 0) {
+            for (let i = 0; i < currentElement.childElementCount; i++) {
+                if (currentElement.children[i].tagName !== this.modelHeader) {
+                    if (currentElement.children[i].innerText !== this.reset && currentElement.children[i].value !== this.reset) {
+                        if (this._sharedDataService.isDisableUIElements === true) {
+                            currentElement.children[i].setAttribute('disabled', 'true');
+                        } else {
+                            currentElement.children[i].removeAttribute('disabled');
+                        }
+                    } else {
+                        if (this._sharedDataService.isDisableUIElements === true) {
+                            currentElement.children[i].setAttribute('style', 'visibility: hidden');
+                        } else {
+                            currentElement.children[i].setAttribute('style', 'visibility: visible');
+                        }
                     }
                     this.disableAllElements(currentElement.children[i]);
                 }

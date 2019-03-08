@@ -4,9 +4,8 @@
  } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { Logger } from 'angular2-logger/core';
 
-import { TranslateService } from 'ng2-translate';
+import { LoggerService } from '@core';
 
  import {
      HttpError,
@@ -16,16 +15,15 @@ import { TranslateService } from 'ng2-translate';
      UtilityService,
      ToastrService,
      AuthService
-} from '../../core-module/index';
+} from '@core';
 
-import { Constants } from '../shared-module/index';
+import { Constants } from '@shared';
 
-import {
-     LoginModel,
-     LoginService
- } from './index';
+import { LoginModel } from './login.model';
 
-import { environment } from '../../environments/environment';
+import { LoginService } from './login.service';
+
+import { environment } from '@env';
 
 @Component({
     moduleId: module.id,
@@ -41,7 +39,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private _router: Router,
         private _loginService: LoginService,
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _utilityService: UtilityService,
         private _toastrService: ToastrService,
         private _authServiece: AuthService

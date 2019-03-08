@@ -2,7 +2,7 @@
     Injectable
 } from '@angular/core';
 
-import { Logger } from 'angular2-logger/core';
+import { LoggerService } from '../services/logger.service';
 
 import {
     ErroNotificationType,
@@ -11,7 +11,7 @@ import {
     ToastrMessageType,
     ToastrMessage,
     ToastrCode
-} from '../index';
+} from '../extensions/http-error.model';
 
 import { ConfigurationSettings } from '../infrastructure/index';
 
@@ -30,7 +30,7 @@ export class ToastrService {
     showToastrInformation: (informationMessage: string) => void;
     showToastrCustom: (customMessage: string) => void;
 
-    constructor(private _logger: Logger,
+    constructor(private _logger: LoggerService,
         private _toastrMessageHelperService: ToastrMessageHelperService
     ) {
         this._logger.info('ToastrService : constructor ');
@@ -70,7 +70,7 @@ export class ToastrService {
                 break;
         }
         if (messageType !== ToastrMessageType.Information) {
-            this._logger.log(message);
+            this._logger.info(message);
         }
     }
 

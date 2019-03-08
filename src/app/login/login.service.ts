@@ -1,18 +1,19 @@
-﻿import { Injectable } from  '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Logger } from 'angular2-logger/core';
+import {
+    LoggerService,
+    HttpService
+} from '@core';
 
-import { HttpService } from '../../core-module/index';
-
-import { Constants } from '../shared-module/infrastructure/index';
+import { Constants } from '@shared';
 
 @Injectable()
 export class LoginService {
 
     constructor(
         private _http: HttpService,
-        private _logger: Logger
+        private _logger: LoggerService
     ) {
         this._logger.info('LoginService : constructor ');
     }

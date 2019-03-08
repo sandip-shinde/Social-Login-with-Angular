@@ -19,11 +19,9 @@ import {
     XHRBackend
 } from '@angular/http';
 
-import {
-    Logger,
-    Options as LoggerOptions,
-    Level as LoggerLevel
-} from 'angular2-logger/core';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+
+import { CookieService } from 'ngx-cookie-service';
 
 import {
     ToastModule,
@@ -54,7 +52,7 @@ import {
     ValidationService
 } from './infrastructure/index';
 
-import { HttpResponse } from './extensions/http-response.model';
+import { LoggerService } from './services/logger.service';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -85,6 +83,12 @@ export class CustomToastOptions extends ToastOptions {
         FormsModule,
         BrowserAnimationsModule,
         HttpModule,
+        LoggerModule.forRoot(
+            {
+                serverLoggingUrl: '/api/logs',
+                level: NgxLoggerLevel.DEBUG,
+                serverLogLevel: NgxLoggerLevel.ERROR
+            }),
         BsModalModule,
         ToastModule.forRoot()
     ],
@@ -99,11 +103,8 @@ export class CustomToastOptions extends ToastOptions {
         PageNotFoundComponent
     ],
     providers: [
-        {
-            provide: LoggerOptions,
-            useValue: { level: LoggerLevel.INFO }
-        },
-        Logger,
+        LoggerService,
+        CookieService,
         UtilityService,
         { provide: ToastOptions, useClass: CustomToastOptions },
         ToastrMessageHelperService,

@@ -6,14 +6,14 @@
     ElementRef
 } from '@angular/core';
 
-import { Logger } from 'angular2-logger/core';
 import { Router } from '@angular/router';
 
+import { LoggerService } from '@core';
+
 import {
-    SharedData,
     SharedDataService,
     NotificationService
-} from '../../global-module/index';
+} from '@global';
 
 import {
     ConfigurationSettings,
@@ -22,7 +22,7 @@ import {
 
 import {
     LogoutConfirmationComponent
-} from '../header/index';
+} from './logout/logout-confirmation.component';
 
 import {
     HttpError,
@@ -30,9 +30,9 @@ import {
     ErroNotificationType,
     UtilityService,
     AuthService
-} from '../../../core-module/index';
+} from '@core';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '@env';
 
 @Component({
     moduleId: module.id,
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
 
     constructor(
         private _router: Router,
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _sharedDataService: SharedDataService ,
         private _utilityService: UtilityService,
         private _authService: AuthService,
@@ -116,8 +116,7 @@ export class HeaderComponent implements OnInit {
         if (!this.userNavigationMenu.nativeElement.classList.contains(classOpen)
             && (closeMenu === undefined || closeMenu === false)) {
             this.userNavigationMenu.nativeElement.classList.add(classOpen);
-        }
-        else {
+        } else {
             this.userNavigationMenu.nativeElement.classList.remove(classOpen);
         }
     }

@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 
-import { CoreModule } from '../core-module/core.module';
-import { GlobalModule } from './global-module/global.module';
-import { SharedModule } from './shared-module/shared.module';
+import { CoreModule } from '@core/core.module';
+import { GlobalModule } from '@global/global.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { routing } from './app.routing';
 import { ShopModule } from './shop-module/shop.module';
@@ -24,7 +24,12 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    CoreModule.forRoot({ environmentName: environment.environmentName, apiTokenUrl: '', appUrl: environment.appUrl }),
+    CoreModule.forRoot(
+      { environmentName: environment.environmentName
+        , apiTokenUrl: ''
+        , appUrl: environment.appUrl
+        , domain: environment.domain
+      }),
     GlobalModule.forRoot(),
     SharedModule,
     routing,

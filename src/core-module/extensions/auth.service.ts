@@ -1,5 +1,5 @@
 ﻿import { Injectable  } from '@angular/core';
-import { Logger } from 'angular2-logger/core';
+
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/observable/of';
@@ -7,6 +7,8 @@ import 'rxjs/add/observable/throw';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
+
+import { LoggerService } from '../services/logger.service';
 
 import {
     Http,
@@ -16,10 +18,7 @@ import {
 
 import {
     UtilityService,
-    EnvironmentConfig
-} from '../index';
-
-import {
+    EnvironmentConfig,
     Constants
 } from '../infrastructure/index';
 
@@ -35,7 +34,7 @@ export class AuthService {
     private isRefreshTokenCallInProgress = false;
 
     constructor(
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _utilityService: UtilityService,
         private _http: Http,
         private _config: EnvironmentConfig

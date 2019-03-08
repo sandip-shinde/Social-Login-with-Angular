@@ -6,21 +6,20 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 
-import { Logger } from 'angular2-logger/core';
-
 import { Constants } from '../infrastructure/constants';
 
 import {
     ErrorCode,
     ErroNotificationType,
-    HttpError
-} from '../../../core-module/index';
+    HttpError,
+    LoggerService
+} from '@core';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
     constructor(
         private _router: Router,
-        private _logger: Logger
+        private _logger: LoggerService
     ) {
         this._logger.info('AuthGuard : constructor ');
     }

@@ -1,35 +1,20 @@
 ﻿import {
     Component,
-    ViewChild,
-    ViewEncapsulation,
-    Output,
-    EventEmitter,
     OnInit,
     OnDestroy,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    ElementRef
+    ChangeDetectionStrategy
 } from '@angular/core';
 
 import { Subscription } from 'rxjs/Subscription';
 
 import { Router } from '@angular/router';
 
-import { Logger } from 'angular2-logger/core';
+import { LoggerService } from '@core';
 
 import {
     NotificationService,
-    SharedDataService,
-    SharedData
-} from '../../global-module/index';
-
-import {
-    HttpError,
-    ErrorCode,
-    ToastrCode,
-    ErroNotificationType,
-    ToastrService
-} from '../../../core-module/index';
+    SharedDataService
+} from '@global';
 
 @Component({
     moduleId: module.id,
@@ -39,13 +24,13 @@ import {
     providers: []
 })
 export class NavigationComponent implements OnInit, OnDestroy {
-    
+
     subscriptions: Subscription[];
-    cartCount : number;
+    cartCount: number;
 
     constructor(
         private _router: Router,
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _sharedDataService: SharedDataService,
         private _notificationService: NotificationService,
 
@@ -53,8 +38,8 @@ export class NavigationComponent implements OnInit, OnDestroy {
         this.subscriptions = [];
     }
 
-    ngOnInit() {        
-        this._logger.info("NavigationComponent : ngOnInit ");
+    ngOnInit() {
+        this._logger.info('NavigationComponent : ngOnInit ');
 
         this.subscriptions.push(
 
@@ -69,10 +54,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this._logger.info("NavigationComponent : ngOnDestroy ");
+        this._logger.info('NavigationComponent : ngOnDestroy ');
         this.subscriptions.forEach((s) => {
             s.unsubscribe();
         });
     }
-    
+
 }

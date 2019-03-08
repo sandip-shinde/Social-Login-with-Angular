@@ -3,6 +3,8 @@ export * from './infrastructure/index';
 
 export * from './extensions/index';
 
+export * from './services/index';
+
 export * from './toastr/index';
 
 export * from './spinner/spinner.service';

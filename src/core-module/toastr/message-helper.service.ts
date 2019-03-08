@@ -1,25 +1,19 @@
 ﻿import {
-    Injectable,
-    Inject
+    Injectable
 } from '@angular/core';
 
 import {
-    ErroNotificationType,
-    HttpError,
-    ErrorCode,
     ToastrMessageType,
     ToastrMessage
-} from '../index';
+} from '../extensions/http-error.model';
 
-import { TranslateService } from 'ng2-translate';
-import { Logger } from 'angular2-logger/core';
-import { Constants } from '../infrastructure/index';
-import { ToastrService } from './toastr.service';
+import {TranslateService} from '@ngx-translate/core';
+import { LoggerService } from '../services/logger.service';
 
 @Injectable()
 export class ToastrMessageHelperService {
     constructor(
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _translate: TranslateService
     ) {
         this._logger.info('ToastrMessageHelperService : constructor ');
@@ -39,8 +33,7 @@ export class ToastrMessageHelperService {
                 }, (errorResponse) => {
                     this._logger.info('ToastrMessageHelperService : getFormattedToastrMessage : Error');
                 });
-        }
-        else {
+        } else {
             this._translate.get(toastrKey + toastrCode)
                 .subscribe((successResponse) => {
                     this._logger.info('ToastrMessageHelperService : getFormattedToastrMessage : Success');

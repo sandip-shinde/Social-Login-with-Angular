@@ -25,11 +25,11 @@ import {
     UtilityService
 } from '../infrastructure/index';
 
-import { AuthService } from '../extensions/index';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class HttpService extends Http {
-    
+
     constructor(backend: XHRBackend
         , options: RequestOptions
         , utilityService: UtilityService

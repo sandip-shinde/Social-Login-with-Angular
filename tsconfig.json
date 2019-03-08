@@ -14,10 +14,33 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "@core":[
+        "core-module/index"
+      ],
+      "@core/*":[
+        "core-module/*"
+      ],
+      "@global":[
+        "app/global-module/index"
+      ],
+      "@global/*":[
+        "app/global-module/*"
+      ],
+      "@shared":[
+        "app/shared-module/index"
+      ],
+      "@shared/*":[
+        "app/shared-module/*"
+      ],
+      "@env":[
+        "environments/environment"
+      ]
+    }
   },
   "include" : [
-    "src/**/*.ts",
-    "node_modules/angular2-logger/app/**/*.ts"
+    "src/**/*.ts"
   ]
 }

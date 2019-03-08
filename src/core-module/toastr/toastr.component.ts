@@ -5,8 +5,8 @@
 } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { Logger } from 'angular2-logger/core';
-import { ToastrService } from './index';
+import { LoggerService } from '../services/logger.service';
+import { ToastrService } from './toastr.service';
 import { Constants } from '../infrastructure/constants';
 import {
     AutoCloseToastrOptions,
@@ -28,7 +28,7 @@ export class ToastrComponent {
 
     constructor(
         private router: Router,
-        private _logger: Logger,
+        private _logger: LoggerService,
         private _globalToastrService: ToastrService,
         private _toastrMgr: ToastsManager,
         private _vRef: ViewContainerRef

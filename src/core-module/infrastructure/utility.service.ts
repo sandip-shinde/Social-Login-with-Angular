@@ -1,13 +1,14 @@
-﻿import { Injectable } from  '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
-import { Logger } from 'angular2-logger/core';
+import { LoggerService } from '../services/logger.service';
 
 
 export class EnvironmentConfig {
     environmentName: string;
     apiTokenUrl: string;
     appUrl: string;
+    domain: string;
 }
 
 @Injectable()
@@ -16,8 +17,8 @@ export class UtilityService {
     features: string = "width = 800, height = 580, top = 15, left == 15, location=no,directories=no,titlebar=no,status=no, toolbar = no, menubar = no, scrollbars = 1, resizable = 1, location = 0";
     environmentName: string;
 
-    constructor(        
-        private _logger: Logger,
+    constructor(
+        private _logger: LoggerService,
         private _config: EnvironmentConfig
     ) {
         this._logger.info("UtilityService : constructor ");
