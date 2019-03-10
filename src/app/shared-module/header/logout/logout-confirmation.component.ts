@@ -5,7 +5,8 @@
     Output,
     EventEmitter,
     ChangeDetectionStrategy,
-    ElementRef
+    ElementRef,
+    ChangeDetectorRef
 } from '@angular/core';
 
 import { Router } from '@angular/router';
@@ -26,7 +27,8 @@ export class LogoutConfirmationComponent {
 
     constructor(
         private router: Router,
-        private _logger: LoggerService
+        private _logger: LoggerService,
+        private _cdRef: ChangeDetectorRef
     ) {
         this._logger.info('LogoutConfirmationComponent : ngOnInit ');
     }
@@ -34,6 +36,7 @@ export class LogoutConfirmationComponent {
     showConfirmation() {
         this._logger.info('LogoutConfirmationComponent : showConfirmation ');
         this._displayModal = true;
+        this._cdRef.detectChanges();
     }
 
     closeAndInstructLogoutToParent() {

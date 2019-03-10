@@ -32,10 +32,10 @@ export class ToastrService {
     getMessage(toastrCode) {
         let message = '';
 
-        this._translate.get('MESSAGES.Toastr' + toastrCode)
+        this._translate.get('MESSAGES.Toastr.' + toastrCode)
                 .subscribe((successResponse) => {
                     this._logger.info('ToastrMessageHelperService : getFormattedToast : Success');
-                    message = successResponse.message;
+                    message = successResponse;
                 }, (errorResponse) => {
                     this._logger.info('ToastrMessageHelperService : getFormattedToastrMessage : Error');
                 });

@@ -7,9 +7,9 @@ export const environment = {
   production: true,
   environmentName: 'Production',
   domain : '.client1.com',
-  appUrl: 'https://ngpwax.azurewebsites.net/',
-  apiUrl: 'https://ngapix.azurewebsites.net/api/',
-  errorPageUrl: 'https://ngpwax.azurewebsites.net/',
-  apiTokenUrl: 'https://ngapix.azurewebsites.net/token'
+  appUrl: 'http://localhost:4200/',
+  apiUrl: 'http://localhost:5000/api/',
+  errorPageUrl: 'http://localhost:4200/',
+  apiTokenUrl: 'http://localhost:5000/token'
 };
 
