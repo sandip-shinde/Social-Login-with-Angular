@@ -45,14 +45,12 @@ namespace Xpanxion.MicroService.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, 
-            IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app,  IHostingEnvironment env)
         {
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
-                //context.Database.Migrate();
                 context.Database.EnsureCreated();
             }
 
@@ -60,7 +58,13 @@ namespace Xpanxion.MicroService.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "api/{controller}/{action}/{id?}");
+            });
+            app.UseStaticFiles();
         }
 
         #region Dependency Registration

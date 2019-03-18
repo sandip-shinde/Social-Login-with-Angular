@@ -11,7 +11,7 @@ namespace Xpanxion.MicroService.Api.Consumer
         {
             Console.WriteLine("Hello World!");
 
-            //RegisterUserAPI();
+            RegisterUserAPI();
 
             GetUserAPI();
 
@@ -36,6 +36,7 @@ namespace Xpanxion.MicroService.Api.Consumer
 
             ApiProxy apiProxy = new ApiProxy();
             var response = JsonConvert.DeserializeObject<UserRegisterResponse>(apiProxy.PostAsyncEncodedContent("user/register", request).Result.Content.ReadAsStringAsync().Result);
+            Console.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         private static void GetUserAPI()
@@ -48,6 +49,7 @@ namespace Xpanxion.MicroService.Api.Consumer
 
             ApiProxy apiProxy = new ApiProxy();
             var response =  JsonConvert.DeserializeObject<UserGetResponse>(apiProxy.PostAsyncEncodedContent("user/getbyname", request).Result.Content.ReadAsStringAsync().Result);
+            Console.WriteLine(JsonConvert.SerializeObject(response));
         }
     }
 }

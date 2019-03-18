@@ -14,5 +14,8 @@ namespace Xpanxion.MicroService.Api.Integration.Contracts.Request
         [JsonProperty(PropertyName = "userName")]
         public string UserName { get; set; }
 
+        [JsonProperty(PropertyName = "password")]
+        public string Password { get; set; }
+
     }
 }

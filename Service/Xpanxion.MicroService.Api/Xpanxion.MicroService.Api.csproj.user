@@ -4,6 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>Xpanxion.MicroService.Api</ActiveDebugProfile>
+    <ActiveDebugProfile>IISProfile</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>xpuserserviceapi - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

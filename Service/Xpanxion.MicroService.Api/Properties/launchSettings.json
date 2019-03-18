@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://usermicroservice.xpanxion.com:8081",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:10738/",
       "sslPort": 0
@@ -17,13 +21,22 @@
       }
     },
     "Xpanxion.MicroService.Api": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
       "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:10739/"
+      "applicationUrl": "http://usermicroservice.xpanxion.com:8081/"
+    },
+    "IISProfile": {
+      "commandName": "IIS",
+      "workingDirectory": "D:\\Development_Accelerators\\MS_DC\\Service\\Xpanxion.MicroService.Api",
+      "launchBrowser": true,
+      "launchUrl": "http://usermicroservice.xpanxion.com:8081/api/values",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
