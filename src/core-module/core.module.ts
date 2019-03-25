@@ -62,12 +62,7 @@ export function httpServiceFactory(backend: XHRBackend, options: RequestOptions,
         FormsModule,
         BrowserAnimationsModule,
         HttpModule,
-        LoggerModule.forRoot(
-            {
-                serverLoggingUrl: '/api/logs',
-                level: NgxLoggerLevel.DEBUG,
-                serverLogLevel: NgxLoggerLevel.ERROR
-            }),
+        LoggerModule.forRoot(),
         DialogModule,
         ToastModule
     ],

@@ -12,7 +12,12 @@ export class LoggerService {
 
     // TODO - drive the logger level via environments/environment config
     constructor(customLogger: CustomNGXLoggerService) {
-      this._logger = customLogger.create({level: NgxLoggerLevel.ERROR});
+      this._logger = customLogger.create(
+        {
+            serverLoggingUrl: '/api/logs',
+            level: NgxLoggerLevel.TRACE,
+            serverLogLevel: NgxLoggerLevel.ERROR
+        });
     }
 
     // TODO - maintain array of last 100 log info messages
