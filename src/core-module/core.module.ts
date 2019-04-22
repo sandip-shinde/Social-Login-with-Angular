@@ -62,7 +62,7 @@ export function httpServiceFactory(backend: XHRBackend, options: RequestOptions,
         FormsModule,
         BrowserAnimationsModule,
         HttpModule,
-        LoggerModule.forRoot(),
+        LoggerModule,
         DialogModule,
         ToastModule
     ],
