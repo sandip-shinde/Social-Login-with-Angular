@@ -16,6 +16,7 @@ import { OfferComponent } from './shop-module/offer/offer.component';
 import { InvoiceComponent } from './order-module/invoice/invoice.component';
 import { OrderComponent } from './order-module/order/order.component';
 import { LoginComponent } from './login';
+import { WebcamDemoComponent } from './webcam-demo/webcam.demo.component';
 
 const appRoutes: Routes = [
     {
@@ -40,6 +41,11 @@ const appRoutes: Routes = [
     {
         path: Constants.uiRoutes.invoice,
         component: InvoiceComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: Constants.uiRoutes.webcam,
+        component: WebcamDemoComponent,
         canActivate: [AuthGuardService]
     },
     {

@@ -10,6 +10,7 @@ import { SharedModule } from '@shared/shared.module';
 import { routing } from './app.routing';
 import { ShopModule } from './shop-module/shop.module';
 import { OrderModule } from './order-module/order.module';
+import { WebcamDemo } from './webcam-demo/webcam.demo';
 
 import { LoginComponent } from './login/index';
 import { AppComponent } from './app.component';

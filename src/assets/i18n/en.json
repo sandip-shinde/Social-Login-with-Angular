@@ -13,7 +13,8 @@
     "productMenu": "product",
     "offerMenu": "offer",
     "orderMenu": "order",
-    "invoiceMenu": "invoice"
+    "invoiceMenu": "invoice",
+    "webcamMenu": "webcam"
   },
   "HEADER": {
     "logoutConfirmation": {
