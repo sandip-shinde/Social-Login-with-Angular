@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StarterKit.Common\StarterKit.Common.csproj" />
+    <ProjectReference Include="..\StarterKit.Contracts\StarterKit.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
