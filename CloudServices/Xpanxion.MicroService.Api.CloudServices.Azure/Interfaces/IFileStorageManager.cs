@@ -8,5 +8,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces
     public interface IFileStorageManager
     {
         Task AddFile(string fileName);
+
+
     }
 }
