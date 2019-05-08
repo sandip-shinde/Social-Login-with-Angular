@@ -16,6 +16,20 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 
+import {GoogleLoginProvider, SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+
+export function getAuthServiceConfigs() {
+  const config = new AuthServiceConfig(
+      [          
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("775043747121-3i7bejbtq0bo235ck37s1652f3rl6crn.apps.googleusercontent.com")       
+        }
+      ]
+  );
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +48,13 @@ import { environment } from '../environments/environment';
     SharedModule,
     routing,
     ShopModule,
-    OrderModule
+    OrderModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

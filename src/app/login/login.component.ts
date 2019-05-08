@@ -25,10 +25,13 @@ import { LoginService } from './login.service';
 
 import { environment } from '@env';
 
+import { AuthService as SocialAuthService,GoogleLoginProvider } from 'angularx-social-login';
+
 @Component({
     moduleId: module.id,
     selector: 'login-app',
     templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css'],
     providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
@@ -42,7 +45,8 @@ export class LoginComponent implements OnInit {
         private _logger: LoggerService,
         private _utilityService: UtilityService,
         private _toastrService: ToastrService,
-        private _authServiece: AuthService
+        private _authServiece: AuthService,
+        private _socialAuthService: SocialAuthService
     ) {
         this._logger.info('LoginComponent : constructor ');
         this.model = new LoginModel();
@@ -57,6 +61,43 @@ export class LoginComponent implements OnInit {
             this._router.navigate([Constants.uiRoutes.product]);
         }
     }
+    public socialSignIn(socialPlatform: string) {
+        let socialPlatformProvider;
+        this._logger.info('LoginComponent : socialSignIn ');
+        this.model.isAuthInitiated = true;
+        if (socialPlatform === 'google') {
+          socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+        }          
+        this._socialAuthService.signIn(socialPlatformProvider).then(userData => {
+            this.socialUserAccess_token(userData);
+          }         
+        ,errorResponse=>{ 
+            this.resetModel();
+            this._logger.error('LoginComponent__socialAuthService.logOn : errorResponse ');
+            this.model.isAuthInitiated = false;
+            throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);});
+      }
+
+      socialUserAccess_token(data) {
+        this._logger.info('LoginComponent : login ');
+        this.model.isAuthInitiated = true;
+        this.model.emailAddress = data.email;
+        this._loginService.logOn({ UserName: this.model.emailAddress})
+        .subscribe(
+        (successResponse) => {
+            this._logger.info('LoginComponent_loginService.logOn : successResponse ');
+            const response = successResponse.json();
+            response.code = '';
+            this.model.isAuthInitiated = false;
+            this.processLoginRequest(response);
+        },
+        (errorResponse) => {
+            this.resetModel();
+            this._logger.error('LoginComponent_loginService.logOn : errorResponse ');
+            this.model.isAuthInitiated = false;
+            throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);
+        });
+      }
 
     login() {
 
