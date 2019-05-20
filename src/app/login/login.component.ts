@@ -78,25 +78,10 @@ export class LoginComponent implements OnInit {
             throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);});
       }
 
-      socialUserAccess_token(data) {
+      socialUserAccess_token(data) {      
+        var response={apiToken:{access_token:data.idToken,refresh_token:data.authToken},sessionId:data.id};
+        this.processLoginRequest(response);     
         this._logger.info('LoginComponent : login ');
-        this.model.isAuthInitiated = true;
-        this.model.emailAddress = data.email;
-        this._loginService.logOn({ UserName: this.model.emailAddress})
-        .subscribe(
-        (successResponse) => {
-            this._logger.info('LoginComponent_loginService.logOn : successResponse ');
-            const response = successResponse.json();
-            response.code = '';
-            this.model.isAuthInitiated = false;
-            this.processLoginRequest(response);
-        },
-        (errorResponse) => {
-            this.resetModel();
-            this._logger.error('LoginComponent_loginService.logOn : errorResponse ');
-            this.model.isAuthInitiated = false;
-            throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);
-        });
       }
 
     login() {
