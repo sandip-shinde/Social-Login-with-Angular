@@ -49,7 +49,8 @@ export class HttpService extends Http {
 
         return super.get(url, options)
             .catch((error) => {            
-                  
+
+                    /*
                     if (error.status == 403) {
                         return this.authService
                             .refreshApiToken()
@@ -59,7 +60,7 @@ export class HttpService extends Http {
                                 return super.get(url, options);
 
                             });      
-                }        
+                    }*/        
                                     
                   return this.handleError(error);
              })
@@ -81,6 +82,7 @@ export class HttpService extends Http {
         return super.post(url, body, options)
             .catch((error) => {
 
+                /*
                 if (error.status == 403) {
                     return this.authService
                         .refreshApiToken()
@@ -90,7 +92,7 @@ export class HttpService extends Http {
                             return super.post(url, body, options);
 
                         });
-                }
+                }*/
 
                 return this.handleError(error);
             })

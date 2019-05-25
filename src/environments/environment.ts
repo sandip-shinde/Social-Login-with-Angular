@@ -8,7 +8,5 @@ export const environment = {
   environmentName: 'Dev',
   domain : '.client1.com',
   appUrl: 'http://localhost:4200/',
-  apiUrl: 'http://localhost:5000/api/',
-  errorPageUrl: 'http://localhost:4200/',
-  apiTokenUrl: 'http://localhost:5000/token'
+  apiUrl: 'https://localhost:5001/api/'
 };

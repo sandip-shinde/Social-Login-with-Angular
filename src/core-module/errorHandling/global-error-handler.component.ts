@@ -54,28 +54,22 @@ export class GlobalErrorHandlerComponent implements ErrorHandler {
         try {
             this._logger.info('ErrorHandler : handleError()');
 
-            const sessionId = localStorage.getItem(Constants.localStorageKeys.sessionId);
-
-            if (this._authService.isUserLoggedIn() &&  (sessionId == null || sessionId === undefined || sessionId === '') ) {
+            if (error && error.status === 0) { 
+                this._logger.error('!!!!!! API is down !!!!!!');                
+            }
+            else if (error && error.status === 401) { // token expired/invalid
+                localStorage.clear();
+                this._logger.error(error);
                 this._utilityService.redirectToURL(url);
                 return;
             }
-
-            if (error && error.error && error.error.status === 0) {
-                 return;
-            }
-
-            if (error && error.error && error.error.status === 405) {
-                this._utilityService.redirectToURL(url);
-                return;
-            }
-
+            
             this._spinner.stop();
-
             this._logger.error(error);
 
         } catch (loggingError) {
-            this._logger.error('Error in global error handler service.');
+            this._logger.error('Error in global error handler service. Original error was - ');
+            this._logger.error(error);
             this._utilityService.redirectToURL(url);
             return;
         }

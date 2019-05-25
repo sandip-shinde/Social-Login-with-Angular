@@ -84,18 +84,10 @@ export class HeaderComponent implements OnInit {
 
                 localStorage.clear();
 
-                if (successResponse.url.indexOf(Constants.queryString.SessionExpired) >= 0
-                || successResponse.url.indexOf(Constants.queryString.SessionKilled) >= 0) {
-                    this._utilityService.redirectToURL(url);
-                    return;
-                }
-
                 if (successResponse.headers.get(Constants.requestHeader.contentType) !== Constants.contentType.json) {
                     this._utilityService.redirectToURL(url);
                     return;
                 }
-
-                const response = successResponse.json();
 
                 this._utilityService.redirectToURL(environment.appUrl);
             },

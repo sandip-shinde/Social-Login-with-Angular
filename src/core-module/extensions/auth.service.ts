@@ -29,8 +29,7 @@ export class AuthService {
 
     // to be used internally, use externaly via isUserLoggedIn() method
     private isLoggedIn = false;
-    private apiToken: ApiTokenModel;
-    private sessionId: string;
+    private apiToken: string;
     private isRefreshTokenCallInProgress = false;
 
     constructor(
@@ -41,9 +40,8 @@ export class AuthService {
     ) {
         this._logger.info('AuthService : constructor ');
 
-        this.apiToken = (JSON.parse(localStorage.getItem(Constants.localStorageKeys.apiToken)) as ApiTokenModel);
+        this.apiToken = JSON.parse(localStorage.getItem(Constants.localStorageKeys.apiToken));
         this.isLoggedIn = localStorage.getItem(Constants.localStorageKeys.isLoggedIn) === 'true';
-        this.sessionId = localStorage.getItem(Constants.localStorageKeys.sessionId);
     }
 
     isUserLoggedIn(): boolean {
@@ -58,7 +56,7 @@ export class AuthService {
         options.withCredentials = false;
         this.setAuthHeaders(options);
 
-        return this._http.post(url, null, options);
+        return this._http.get(url, options);
     }
 
     setAuthHeaders(options?: RequestOptionsArgs): void {
@@ -69,13 +67,13 @@ export class AuthService {
 
         // reset password requires webapi access before login
         if (this.apiToken) {
-            options.headers.set(Constants.requestHeader.authorization, `${Constants.requestHeader.bearer} ${this.apiToken.access_token}`);
-            options.headers.set(Constants.requestHeader.sessionId, `${this.sessionId}`);
+            options.headers.set(Constants.requestHeader.authorization, `${Constants.requestHeader.bearer} ${this.apiToken}`);
         }
 
         options.headers.set(Constants.requestHeader.accept, Constants.contentType.json);
     }
 
+    /*
     refreshApiToken(): Observable<any> {
 
         if (this.isRefreshTokenCallInProgress) {
@@ -113,5 +111,5 @@ export class AuthService {
                 return Observable.of(false);
             }
             );
-    }
+    }*/
 }
