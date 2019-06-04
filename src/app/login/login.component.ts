@@ -25,7 +25,7 @@ import { LoginService } from './login.service';
 
 import { environment } from '@env';
 
-import { AuthService as SocialAuthService,GoogleLoginProvider } from 'angularx-social-login';
+import { AuthService as SocialAuthService,GoogleLoginProvider,FacebookLoginProvider } from 'angularx-social-login';
 
 @Component({
     moduleId: module.id,
@@ -62,30 +62,33 @@ export class LoginComponent implements OnInit {
         }
     }
     public socialSignIn(socialPlatform: string) {
-        let socialPlatformProvider;
         this._logger.info('LoginComponent : socialSignIn ');
+        let socialPlatformProvider;       
         this.model.isAuthInitiated = true;
         if (socialPlatform === 'google') {
           socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-        }          
+        }   
+        if (socialPlatform === 'facebook') {
+            socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+          }          
         this._socialAuthService.signIn(socialPlatformProvider).then(userData => {
             this.socialUserAccess_token(userData);
           }         
         ,errorResponse=>{ 
-            this.resetModel();
             this._logger.error('LoginComponent__socialAuthService.logOn : errorResponse ');
+            this.resetModel();          
             this.model.isAuthInitiated = false;
             throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);});
       }
 
-      socialUserAccess_token(data) {      
+      socialUserAccess_token(data) {  
+        this._logger.info('LoginComponent : socialUserAccess_token ');    
         var response={apiToken:{access_token:data.idToken,refresh_token:data.authToken},sessionId:data.id};
         this.processLoginRequest(response);     
-        this._logger.info('LoginComponent : login ');
+     
       }
 
     login() {
-
         this._logger.info('LoginComponent : login ');
         this.model.isAuthInitiated = true;
         if (!this.model.emailAddress) {

@@ -16,14 +16,28 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 
-import {GoogleLoginProvider, SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import {LoginOpt,GoogleLoginProvider,FacebookLoginProvider,SocialLoginModule,AuthServiceConfig } from "angularx-social-login";
+
+const googleLoginOptions: LoginOpt = {
+  scope: 'profile email'
+}; 
+
+const fbLoginOptions: LoginOpt = {
+  scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  return_scopes: true,
+  enable_profile_selector: true
+};
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
       [          
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider(environment.GoogleloginApi)       
+          provider: new GoogleLoginProvider(environment.GoogleloginApi,googleLoginOptions)       
+        },
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider(environment.FaceBookloginApi,fbLoginOptions)       
         }
       ]
   );
