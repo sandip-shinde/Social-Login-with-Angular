@@ -19,7 +19,9 @@ import { environment } from '../environments/environment';
 import {LoginOpt,GoogleLoginProvider,FacebookLoginProvider,SocialLoginModule,AuthServiceConfig } from "angularx-social-login";
 
 const googleLoginOptions: LoginOpt = {
-  scope: 'profile email'
+  scope: 'profile email',
+  return_scopes: true,
+  enable_profile_selector: true
 }; 
 
 const fbLoginOptions: LoginOpt = {
