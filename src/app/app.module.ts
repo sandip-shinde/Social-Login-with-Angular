@@ -23,7 +23,7 @@ const googleLoginOptions: LoginOpt = {
 }; 
 
 const fbLoginOptions: LoginOpt = {
-  scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
+  scope: 'email',
   return_scopes: true,
   enable_profile_selector: true
 };
