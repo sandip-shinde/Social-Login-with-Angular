@@ -65,10 +65,10 @@ export class LoginComponent implements OnInit {
         this._logger.info('LoginComponent : socialSignIn ');
         let socialPlatformProvider;       
         this.model.isAuthInitiated = true;
-        if (socialPlatform === 'google') {
+        if (socialPlatform === Constants.LoginApi.Google) {
           socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
         }   
-        if (socialPlatform === 'facebook') {
+        if (socialPlatform === Constants.LoginApi.Facebook) {
             socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
           }          
         this._socialAuthService.signIn(socialPlatformProvider).then(userData => {

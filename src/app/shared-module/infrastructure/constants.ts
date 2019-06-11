@@ -93,4 +93,9 @@ export class Constants {
     static splitChars = {
         comma: ','
     };
+    
+    static LoginApi = {
+        Google: "google",
+        Facebook: "facebook"
+    };
 }
