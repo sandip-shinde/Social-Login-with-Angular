@@ -98,4 +98,5 @@ export class Constants {
         Google: "google",
         Facebook: "facebook"
     };
+    static socialLoginTitle: string="Connect with social Sign In";
 }

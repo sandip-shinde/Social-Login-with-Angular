@@ -1,55 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { ServiceWorkerModule } from '@angular/service-worker';
-
 import { CoreModule } from '@core/core.module';
 import { GlobalModule } from '@global/global.module';
 import { SharedModule } from '@shared/shared.module';
-
 import { routing } from './app.routing';
 import { ShopModule } from './shop-module/shop.module';
 import { OrderModule } from './order-module/order.module';
-
 import { LoginComponent } from './login/index';
 import { AppComponent } from './app.component';
-
 import { environment } from '../environments/environment';
-
-import {LoginOpt,GoogleLoginProvider,FacebookLoginProvider,SocialLoginModule,AuthServiceConfig } from "angularx-social-login";
-
-const googleLoginOptions: LoginOpt = {
-  scope: 'profile email',
-  return_scopes: true,
-  enable_profile_selector: true
-}; 
-
-const fbLoginOptions: LoginOpt = {
-  scope: 'email',
-  return_scopes: true,
-  enable_profile_selector: true
-};
-
-export function getAuthServiceConfigs() {
-  const config = new AuthServiceConfig(
-      [          
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider(environment.GoogleloginApi,googleLoginOptions)       
-        },
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider(environment.FaceBookloginApi,fbLoginOptions)       
-        }
-      ]
-  );
-  return config;
+import { SocialLoginModule,AuthServiceConfig } from "angularx-social-login";
+import { Constants } from '@core/infrastructure';
+import {SocialLoginComponent} from './social-login/social-login.component'
+import { from } from 'rxjs';
+export function getAuthServiceConfigs() { 
+  return Constants.config;
 }
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SocialLoginComponent
   ],
   imports: [
     BrowserModule,

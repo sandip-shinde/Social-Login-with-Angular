@@ -1,30 +1,11 @@
-﻿ import {
-     Component,
-     OnInit,
- } from '@angular/core';
-
+﻿ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { LoggerService } from '@core';
-
- import {
-     HttpError,
-     ErrorCode,
-     ToastrCode,
-     ErroNotificationType,
-     UtilityService,
-     ToastrService,
-     AuthService
-} from '@core';
-
+ import {HttpError,ErrorCode,ToastrCode,ErroNotificationType,UtilityService,ToastrService,AuthService} from '@core';
 import { Constants } from '@shared';
-
 import { LoginModel } from './login.model';
-
 import { LoginService } from './login.service';
-
 import { environment } from '@env';
-
 import { AuthService as SocialAuthService,GoogleLoginProvider,FacebookLoginProvider } from 'angularx-social-login';
 
 @Component({
@@ -38,14 +19,13 @@ export class LoginComponent implements OnInit {
 
     model: LoginModel;
     showLogin = false;
-
     constructor(
         private _router: Router,
         private _loginService: LoginService,
         private _logger: LoggerService,
         private _utilityService: UtilityService,
         private _toastrService: ToastrService,
-        private _authServiece: AuthService,
+        private _authService: AuthService,
         private _socialAuthService: SocialAuthService
     ) {
         this._logger.info('LoginComponent : constructor ');
@@ -56,38 +36,11 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this._logger.info('LoginComponent : ngOnInit ');
         this.showLogin = true;
-
-        if (this._authServiece.isUserLoggedIn()) {
+        if (this._authService.isUserLoggedIn()) {
             this._router.navigate([Constants.uiRoutes.product]);
         }
     }
-    public socialSignIn(socialPlatform: string) {
-        this._logger.info('LoginComponent : socialSignIn ');
-        let socialPlatformProvider;       
-        this.model.isAuthInitiated = true;
-        if (socialPlatform === Constants.LoginApi.Google) {
-          socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-        }   
-        if (socialPlatform === Constants.LoginApi.Facebook) {
-            socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-          }          
-        this._socialAuthService.signIn(socialPlatformProvider).then(userData => {
-            this.socialUserAccess_token(userData);
-          }         
-        ,errorResponse=>{ 
-            this._logger.error('LoginComponent__socialAuthService.logOn : errorResponse ');
-            this.resetModel();          
-            this.model.isAuthInitiated = false;
-            throw new HttpError(ErrorCode.AuthFailedInvalidAuthResponse, ErroNotificationType.Dialog, errorResponse);});
-      }
-
-      socialUserAccess_token(data) {  
-        this._logger.info('LoginComponent : socialUserAccess_token ');    
-        var response={apiToken:{access_token:data.idToken,refresh_token:data.authToken},sessionId:data.id};
-        this.processLoginRequest(response);     
-     
-      }
-
+   
     login() {
         this._logger.info('LoginComponent : login ');
         this.model.isAuthInitiated = true;

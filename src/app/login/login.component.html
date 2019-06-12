@@ -21,26 +21,7 @@
             </div> 
          </div> 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
-            <div class="login-base-container">               
-                <div class="login-form">
-                      <h1 class="login-title">{{'PUBLIC.Login.title' | translate }}</h1>
-                    <div class="social">
-                        <h4 style="margin: 0 0 41px 0px;">Connect with social Sign In</h4>
-                        <ul>
-                            <li>
-                                <a href="#" (click)="socialSignIn('google')" class="google-plus">
-                                  <span class="fa fa-google"></span>
-                                </a>
-                              </li>  
-                              <!-- <li>
-                                <a href="#" (click)="socialSignIn('facebook')" class="facebook">
-                                  <span class="fa fa-facebook"></span>
-                                </a>
-                              </li>                          -->
-                        </ul>
-                       </div>
-                </div>                
-            </div>
+                <app-social-login></app-social-login>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" >
         </div> 

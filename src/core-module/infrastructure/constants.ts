@@ -1,4 +1,6 @@
-﻿
+﻿import { LoginOpt, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { environment } from '@env';
+
 export class Constants {
         
     static cookies =
@@ -37,4 +39,30 @@ export class Constants {
         isLoggedIn : "isLoggedIn",
         sessionId : "sessionId"
     }
+    
+    static googleLoginOptions: LoginOpt = {
+        scope: 'profile email',
+        return_scopes: true,
+        enable_profile_selector: true
+      }; 
+      
+      static fbLoginOptions: LoginOpt = {
+        scope: 'email',
+        return_scopes: true,
+        enable_profile_selector: true
+      };
+
+      static config = new AuthServiceConfig(
+        [          
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.googleAuthenticationApi,Constants.googleLoginOptions)       
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(environment.FaceBookAuthenticationApi,Constants.fbLoginOptions)       
+          }
+        ]
+    );   
+    
 }
