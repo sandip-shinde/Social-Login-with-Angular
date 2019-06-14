@@ -16,11 +16,15 @@ import { OfferComponent } from './shop-module/offer/offer.component';
 import { InvoiceComponent } from './order-module/invoice/invoice.component';
 import { OrderComponent } from './order-module/order/order.component';
 import { LoginComponent } from './login';
-
+import { SocialLoginComponent } from './social-login/social-login.component';
 const appRoutes: Routes = [
     {
         path: Constants.uiRoutes.empty,
         component: LoginComponent
+    },
+    {
+        path: Constants.uiRoutes.empty,
+        component: SocialLoginComponent
     },
     {
         path: Constants.uiRoutes.product,

@@ -10,5 +10,7 @@ export const environment = {
   appUrl: 'http://localhost:4200/',
   apiUrl: 'http://localhost:5000/api/',
   errorPageUrl: 'http://localhost:4200/',
-  apiTokenUrl: 'http://localhost:5000/token'
+  apiTokenUrl: 'http://localhost:5000/token',
+  googleAuthenticationApi: '775043747121-3i7bejbtq0bo235ck37s1652f3rl6crn.apps.googleusercontent.com',
+  FaceBookAuthenticationApi:'561602290896109'
 };

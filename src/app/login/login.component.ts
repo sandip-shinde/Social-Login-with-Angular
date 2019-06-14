@@ -1,48 +1,32 @@
-﻿ import {
-     Component,
-     OnInit,
- } from '@angular/core';
-
+﻿ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { LoggerService } from '@core';
-
- import {
-     HttpError,
-     ErrorCode,
-     ToastrCode,
-     ErroNotificationType,
-     UtilityService,
-     ToastrService,
-     AuthService
-} from '@core';
-
+ import {HttpError,ErrorCode,ToastrCode,ErroNotificationType,UtilityService,ToastrService,AuthService} from '@core';
 import { Constants } from '@shared';
-
 import { LoginModel } from './login.model';
-
 import { LoginService } from './login.service';
-
 import { environment } from '@env';
+import { AuthService as SocialAuthService,GoogleLoginProvider,FacebookLoginProvider } from 'angularx-social-login';
 
 @Component({
     moduleId: module.id,
     selector: 'login-app',
     templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css'],
     providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
 
     model: LoginModel;
     showLogin = false;
-
     constructor(
         private _router: Router,
         private _loginService: LoginService,
         private _logger: LoggerService,
         private _utilityService: UtilityService,
         private _toastrService: ToastrService,
-        private _authServiece: AuthService
+        private _authService: AuthService,
+        private _socialAuthService: SocialAuthService
     ) {
         this._logger.info('LoginComponent : constructor ');
         this.model = new LoginModel();
@@ -52,14 +36,12 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this._logger.info('LoginComponent : ngOnInit ');
         this.showLogin = true;
-
-        if (this._authServiece.isUserLoggedIn()) {
+        if (this._authService.isUserLoggedIn()) {
             this._router.navigate([Constants.uiRoutes.product]);
         }
     }
-
+   
     login() {
-
         this._logger.info('LoginComponent : login ');
         this.model.isAuthInitiated = true;
         if (!this.model.emailAddress) {

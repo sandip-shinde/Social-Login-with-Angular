@@ -93,4 +93,10 @@ export class Constants {
     static splitChars = {
         comma: ','
     };
+    
+    static LoginApi = {
+        Google: "google",
+        Facebook: "facebook"
+    };
+    static socialLoginTitle: string="Connect with social Sign In";
 }

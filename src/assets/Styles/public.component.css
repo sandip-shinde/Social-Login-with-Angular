@@ -46,7 +46,7 @@ body{font-family:'Segoe UI'; font-size:14px; color:#333333; height:100%; backgro
 #login-pg .no-login{color:#5b5c5e;}
 #login-pg ul{list-style-type:none;}
 #login-pg ul li{display: inline-block; margin: 0 11px; color:#939598; font-size:14px; font-weight:normal;}
-#login-pg ul li a{color:#565656; text-decoration:none;}
+#login-pg ul li a{color:white; text-decoration:none;}
 .login-footer-head{font-size:15px; padding:0; margin: 0 0 10px 0; font-weight:bold;}
 .login-footer-h2{margin:0 0 10px; font-size:15px;}
 
