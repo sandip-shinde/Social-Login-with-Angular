@@ -29,7 +29,8 @@ namespace Xpanxion.MicroService.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+	        var storageConnectionString = Configuration["connectionStrings:BlobStorage:Account"];
+		}
 
         public IConfiguration Configuration { get; }
 

@@ -27,4 +27,13 @@
     <ProjectReference Include="..\..\Integration\Xpanxion.MicroService.Api.RequestHandler\Xpanxion.MicroService.Api.Integration.RequestHandler.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
