@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CloudServices\Xpanxion.MicroService.Api.CloudServices.Azure\Xpanxion.MicroService.Api.CloudServices.Azure.csproj" />
     <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Repository\Xpanxion.MicroService.Api.DataAccess.Repository.csproj" />
     <ProjectReference Include="..\Xpanxion.MicroService.Api.Contracts\Xpanxion.MicroService.Api.Integration.Contracts.csproj" />
     <ProjectReference Include="..\Xpanxion.MicroService.Api.RequestValidator\Xpanxion.MicroService.Api.RequestValidator.csproj" />
