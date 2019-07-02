@@ -26,3 +26,7 @@
 StarterKit/.vs/StarterKit/v15/Server/sqlite3/storage.ide
 StarterKit/.vs/StarterKit/v15/Server/sqlite3/storage.ide-shm
 StarterKit/.vs/StarterKit/v15/Server/sqlite3/storage.ide-wal
+StarterKit/.vs/StarterKit/v15/.suo
+*.ide
+*.ide-shm
+*.ide-wal
