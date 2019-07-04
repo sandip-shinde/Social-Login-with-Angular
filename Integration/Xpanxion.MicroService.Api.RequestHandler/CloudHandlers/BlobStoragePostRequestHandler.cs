@@ -13,18 +13,18 @@ using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api.Integration.RequestHandler.CloudHandlers
 {
-	public class BlobStorageRequestHandler: BaseRequestHandler<BlobStorageRequest, BlobStorageResponse>
+	public class BlobStoragePostRequestHandler: BaseRequestHandler<BlobStoragePostRequest, BlobStoragePostResponse>
 	{
 		readonly IBlobStorageManager _blobManager;
-		public BlobStorageRequestHandler(IBlobStorageManager blobStorageManager, IMapper mapper, 
-			IRequestValidator<BlobStorageRequest> requestValidator) : base(mapper, requestValidator)
+		public BlobStoragePostRequestHandler(IBlobStorageManager blobStorageManager, IMapper mapper, 
+			IRequestValidator<BlobStoragePostRequest> requestValidator) : base(mapper, requestValidator)
 		{
 			_blobManager = blobStorageManager;
 		}
 
-		protected override Task<BlobStorageResponse> HandleRequestAsync(BlobStorageRequest request)
+		protected override Task<BlobStoragePostResponse> HandleRequestAsync(BlobStoragePostRequest request)
 		{
-			var response = new BlobStorageResponse();
+			var response = new BlobStoragePostResponse();
 
 			if (_blobManager.AddBlob(request.ConnectionString, request.ContainerName, request.DirectoryName,
 				request.BlobName, request.BlobContent))
@@ -34,7 +34,7 @@ namespace Xpanxion.MicroService.Api.Integration.RequestHandler.CloudHandlers
 			else
 				response.Error = new ApiError(ErrorCode.BlobAlreadyExist);
 
-			return Task.FromResult<BlobStorageResponse>(response);
+			return Task.FromResult<BlobStoragePostResponse>(response);
 		}
 	}
 }

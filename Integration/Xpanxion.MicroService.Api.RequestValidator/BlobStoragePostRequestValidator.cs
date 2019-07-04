@@ -6,9 +6,9 @@ using Xpanxion.MicroService.Api.RequestValidator.Interfaces;
 
 namespace Xpanxion.MicroService.Api.RequestValidator
 {
-	public class BlobStorageRequestValidator: IRequestValidator<BlobStorageRequest>
+	public class BlobStoragePostRequestValidator: IRequestValidator<BlobStoragePostRequest>
 	{
-		public Integration.Contracts.Types.ValidationResult Validate(BlobStorageRequest request)
+		public Integration.Contracts.Types.ValidationResult Validate(BlobStoragePostRequest request)
 		{
 			// TODO : Add Contract valudations or else return null
 

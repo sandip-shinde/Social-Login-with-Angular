@@ -122,7 +122,8 @@ namespace Xpanxion.MicroService.Api
             serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
             serviceCollection.AddTransient<IRequestValidator<UserRegisterRequest>, UserRegisterRequestValidator>();
             serviceCollection.AddTransient<IRequestValidator<UserGetRequest>, UserGetRequestValidator>();
-	        serviceCollection.AddTransient<IRequestValidator<BlobStorageRequest>, BlobStorageRequestValidator>();
+	        serviceCollection.AddTransient<IRequestValidator<BlobStoragePostRequest>, BlobStoragePostRequestValidator>();
+	        serviceCollection.AddTransient<IRequestValidator<BlobStorageGetRequest>, BlobStorageGetRequestValidator>();
 		}
 
         private void RegisterRequestHandlers(IServiceCollection serviceCollection)
@@ -130,7 +131,8 @@ namespace Xpanxion.MicroService.Api
             serviceCollection.AddTransient<IRequestHandlerProvider, RequestHandlerProvider>();
             serviceCollection.AddTransient<IRequestHandler<UserRegisterRequest, UserRegisterResponse>, UserRegisterRequestHandler>();
             serviceCollection.AddTransient<IRequestHandler<UserGetRequest, UserGetResponse>, UserGetRequestHandler>();
-	        serviceCollection.AddTransient<IRequestHandler<BlobStorageRequest, BlobStorageResponse>, BlobStorageRequestHandler>();
+	        serviceCollection.AddTransient<IRequestHandler<BlobStoragePostRequest, BlobStoragePostResponse>, BlobStoragePostRequestHandler>();
+	        serviceCollection.AddTransient<IRequestHandler<BlobStorageGetRequest, BlobStorageGetResponse>, BlobStorageGetRequestHandler>();
 		}
 
 	    private void RegisterAzureStorageManagers(IServiceCollection serviceCollection)
@@ -140,10 +142,10 @@ namespace Xpanxion.MicroService.Api
 
 	    private void RegisterKeyVaultSettings(IServiceCollection serviceCollection)
 	    {
-		    Configuration["AppSettings:AzureStorageAccountConnectionString"] = Configuration["connectionStrings:BlobStorage:Account"];		    
-		    serviceCollection.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+		    Configuration["AppSettings:AzureStorageAccountConnectionString"] = Configuration["connectionStrings:BlobStorage:Account"];
+			Configuration["AppSettings:AzureServiceBusConnectionString"] = Configuration["connectionStrings:ServiceBus:Account"];
+			serviceCollection.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 		}
-
 
 	    #endregion
     }

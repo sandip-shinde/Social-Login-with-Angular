@@ -9,5 +9,8 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces
 	    bool AddBlob(string connectionString, string containerName, string directoryName, string blobName,
 		    byte[] blobContent);
 
+	    byte[] GetBlob(string connectionString, string containerName, string blobName);
+
+
     }
 }

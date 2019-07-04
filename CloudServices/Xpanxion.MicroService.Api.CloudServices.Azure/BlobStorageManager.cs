@@ -12,7 +12,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
 {
 	public class BlobStorageManager : IBlobStorageManager
 	{
-		private CloudBlobClient _blobClient;		
+		private static CloudBlobClient _blobClient;		
 		private CloudBlobContainer _container;	
 		private CloudBlockBlob _blob;		
 		private CloudStorageAccount _storageAccount;
@@ -33,21 +33,40 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
 		//	container = blobClient.GetContainerReference(containerName);
 		//}
 
+		public byte[] GetBlob(string connectionString,string containerName, string blobName)
+		{
+			var client = GetBlobClientObject(connectionString);
+			var container = client.GetContainerReference(containerName);
+			var blockBlob = container.GetBlockBlobReference(blobName);
+			blockBlob.FetchAttributesAsync();
+			var fileByteLength = blockBlob.Properties.Length;
+			var fileContents = new byte[fileByteLength];
+			blockBlob.DownloadToByteArrayAsync(fileContents, 0);
+			return fileContents;
+		}
+
 		public bool AddBlob(string connectionString, string containerName, string directoryName, string blobName, byte[] blobContent)
 		{
 			return ExecuteWithExceptionHandlingAndReturnValue(
 				() =>
 				{
-					_storageAccount = CloudStorageAccount.Parse(connectionString);
-					_blobClient = _storageAccount.CreateCloudBlobClient();
-					_container = _blobClient.GetContainerReference(containerName);
-					_container.CreateIfNotExistsAsync();
-					_blob = _container.GetBlockBlobReference(blobName);					
+					var client=GetBlobClientObject(connectionString);
+					var container = client.GetContainerReference(containerName);
+					container.CreateIfNotExistsAsync();
+					var blockblob = _container.GetBlockBlobReference(blobName);					
 					using (var stream = new MemoryStream(blobContent, false))
 					{
-						_blob.UploadFromStreamAsync(stream);						
+						blockblob.UploadFromStreamAsync(stream);						
 					}
 				});
+		}
+
+		private CloudBlobClient GetBlobClientObject(string connectionString)
+		{
+			if (_blobClient != null) return _blobClient;
+			_storageAccount = CloudStorageAccount.Parse(connectionString);
+			_blobClient = _storageAccount.CreateCloudBlobClient();
+			return _blobClient;
 		}
 
 		public Task<bool> CopyBlobsFromSourceDirectoryToTargetDirectory(string containerName, string sourceDirectory, string targetDirectory)
@@ -95,10 +114,10 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
 			throw new NotImplementedException();
 		}
 
-		public Task<byte[]> GetBlob(string containerName, string directoryName, string blobName)
-		{
-			throw new NotImplementedException();
-		}
+		//public Task<byte[]> GetBlob(string containerName, string directoryName, string blobName)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		public Task<bool> UpdateBlob(string containerName, string directoryName, string blobName, byte[] blobContent)
 		{
