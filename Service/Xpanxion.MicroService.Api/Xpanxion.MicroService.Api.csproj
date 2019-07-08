@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,15 @@
     <ProjectReference Include="..\..\DataAccess\Xpanxion.MicroService.Api.DataAccess.Repository\Xpanxion.MicroService.Api.DataAccess.Repository.csproj" />
     <ProjectReference Include="..\..\Integration\Xpanxion.MicroService.Api.Contracts\Xpanxion.MicroService.Api.Integration.Contracts.csproj" />
     <ProjectReference Include="..\..\Integration\Xpanxion.MicroService.Api.RequestHandler\Xpanxion.MicroService.Api.Integration.RequestHandler.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

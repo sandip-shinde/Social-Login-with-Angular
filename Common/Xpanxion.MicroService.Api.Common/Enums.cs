@@ -8,6 +8,8 @@ namespace Xpanxion.MicroService.Api.Common.Enums
     {
         InvalidRequest = 1,
         UserAlreadyExists = 2,
-        UserNotFound = 3
+        UserNotFound = 3,
+		BlobAlreadyExist=4,
+			BlobNotFound=5
     }
 }

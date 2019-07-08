@@ -13,7 +13,7 @@ namespace Xpanxion.MicroService.Api.Integration.Contracts.Response
         {
             get
             {
-                return this.Error != null;
+                return this.Error == null;
             }
         }
     }
