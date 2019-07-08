@@ -8,7 +8,7 @@ using Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces;
 
 namespace Xpanxion.MicroService.Api.CloudServices.Azure
 {
-   public class ServiceBusManager //: IServiceBusManager
+   public class ServiceBusManager : IServiceBusManager
     {
         static IQueueClient queueClient;
         static ITopicClient topicClient;
