@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces
 {
@@ -9,7 +10,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces
 	    bool AddBlob(string connectionString, string containerName, string directoryName, string blobName,
 		    byte[] blobContent);
 
-	    byte[] GetBlob(string connectionString, string containerName, string blobName);
+        Task<byte[]> GetBlob(string connectionString, string containerName, string blobName);
 
 
     }

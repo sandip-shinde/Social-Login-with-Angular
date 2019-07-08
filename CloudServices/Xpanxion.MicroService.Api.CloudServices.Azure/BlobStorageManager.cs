@@ -33,15 +33,15 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
 		//	container = blobClient.GetContainerReference(containerName);
 		//}
 
-		public byte[] GetBlob(string connectionString,string containerName, string blobName)
+		public async Task<byte[]> GetBlob(string connectionString,string containerName, string blobName)
 		{
 			var client = GetBlobClientObject(connectionString);
 			var container = client.GetContainerReference(containerName);
 			var blockBlob = container.GetBlockBlobReference(blobName);
-			blockBlob.FetchAttributesAsync();
+			await blockBlob.FetchAttributesAsync();
 			var fileByteLength = blockBlob.Properties.Length;
 			var fileContents = new byte[fileByteLength];
-			blockBlob.DownloadToByteArrayAsync(fileContents, 0);
+			await blockBlob.DownloadToByteArrayAsync(fileContents, 0);
 			return fileContents;
 		}
 
@@ -53,7 +53,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
 					var client=GetBlobClientObject(connectionString);
 					var container = client.GetContainerReference(containerName);
 					container.CreateIfNotExistsAsync();
-					var blockblob = _container.GetBlockBlobReference(blobName);					
+					var blockblob = container.GetBlockBlobReference(blobName);					
 					using (var stream = new MemoryStream(blobContent, false))
 					{
 						blockblob.UploadFromStreamAsync(stream);						

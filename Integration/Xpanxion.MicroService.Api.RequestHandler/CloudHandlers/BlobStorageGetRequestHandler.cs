@@ -24,7 +24,7 @@ namespace Xpanxion.MicroService.Api.Integration.RequestHandler.CloudHandlers
 		protected override Task<BlobStorageGetResponse> HandleRequestAsync(BlobStorageGetRequest request)
 		{
 			var response = new BlobStorageGetResponse();
-			var blobContent=_blobManager.GetBlob(request.ConnectionString, request.ContainerName,request.BlobName);
+			var blobContent=_blobManager.GetBlob(request.ConnectionString, request.ContainerName,request.BlobName).Result;
 			response.Error = blobContent!=null ? null : new ApiError(ErrorCode.BlobNotFound);
 			response.BlobContent = blobContent;
 			return Task.FromResult(response);

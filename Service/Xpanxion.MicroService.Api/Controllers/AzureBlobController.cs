@@ -19,7 +19,7 @@ namespace Xpanxion.MicroService.Api.Controllers
 			_appSettings = appSettings.Value;
 		}
 		[HttpPost]
-		[Route("Add")]
+		[Route("")]
 		public async Task<IActionResult> AddBlob([FromBody]BlobStoragePostApiRequest apiRequest)
 		{
 			var request = new BlobStoragePostRequest
@@ -32,16 +32,16 @@ namespace Xpanxion.MicroService.Api.Controllers
 			var result = await RequestHandler.ProcessRequestAsync<BlobStoragePostRequest, BlobStoragePostResponse>(request);
 			return Ok(result);
 		}
-		[HttpPost]
-		[Route("Get")]
-		public async Task<IActionResult> GetBlob([FromBody]BlobStorageGetApiRequest apiRequest)
+		[HttpGet]
+		[Route("{blobName}/{containerName}")]
+		public async Task<IActionResult> GetBlob(string blobName, string containerName)
 		{
 			var request = new BlobStorageGetRequest
 			{
 				ConnectionString = _appSettings.AzureStorageAccountConnectionString,
-				ContainerName = apiRequest.ContainerName,				
-				BlobName = apiRequest.BlobName
-			};
+				ContainerName = containerName,				
+				BlobName = blobName
+            };
 			var result = await RequestHandler.ProcessRequestAsync<BlobStorageGetRequest, BlobStorageGetResponse>(request);
 			return Ok(result);
 		}
