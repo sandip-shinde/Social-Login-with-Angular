@@ -3,7 +3,6 @@
     display: block;
     margin: 0 auto;
     overflow: hidden;
-    width: 82%;
   }
   .social h4 {
     color: #666;
@@ -17,12 +16,12 @@
   .social ul li{
     list-style: none;
     float: left;
-    width: 31.33%;
+    width: 99%;
     margin: 0 1%;
   }
   .social ul li a{
     display: inline-block;
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
     color: #fff;
     padding: 6px;
@@ -38,13 +37,13 @@
   }
   .social ul li a:hover{opacity: .8;}
   .social ul li a.facebook{
-     background: #3a589a;
+     background: #3a589a;cursor: pointer;
   }
   .social ul li a.twitter {
     background: #4099ff;
     }
    .social ul li a.google-plus {
-    background: #e9544f;
+    background: #e9544f;cursor: pointer;
   }
   *{
     margin: 0;
