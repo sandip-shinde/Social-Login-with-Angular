@@ -1,8 +1,8 @@
 ﻿<div class="container-fluid" *ngIf="showLogin">
     <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" >
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
         </div> 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
             <div class="login-base-container">
                 <h1 class="login-title">{{'PUBLIC.Login.title' | translate }}</h1>
                 <div class="login-form">
@@ -16,15 +16,13 @@
                             <input focusIndex="2" [attr.aria-label]="'SHARED.ARIALABLES.loginPage_password_input' | translate" name="password" type="password" class="form-control" id="pwd" placeholder="{{'PUBLIC.Login.passwordPlaceHolder' | translate }}" [(ngModel)]="model.password" (keyup.enter)="login()" #password>
                         </div>
                         <button type="button" class="btn btn-default" id="loadButton" (click)="login()" focusIndex="3">{{'PUBLIC.Login.loginButton' | translate }}<span *ngIf="model.isAuthInitiated == true"> ... <i class='fa fa-spinner fa-spin'> </i></span></button>                                                                      
-                   </form>   
-            </div>       
-            </div> 
+                   </form>                      
+            </div>    
+             <app-social-login></app-social-login> 
+            </div>                        
          </div> 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
-                <app-social-login></app-social-login>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" >
-        </div> 
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >               
+        </div>        
     </div>  
     <div class="row">
         <div class="login-pg-container col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
