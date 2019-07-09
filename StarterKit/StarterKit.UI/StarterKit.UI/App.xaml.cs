@@ -14,14 +14,14 @@ namespace StarterKit.UI
         {
             InitializeComponent();
 
-            //MainPage = new MainPage();
+          //  MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
             var requestHandlerProvider = ServiceLocator.Current.GetInstance<IRequestHandlerProvider>();
             var navigationService = ServiceLocator.Current.GetInstance<INavigationService>();
-            navigationService.SetMainPage( "LoginPage" ,null, false);
+            navigationService.SetMainPage("LoginPage", null, false);
         }
 
         protected override void OnSleep()
