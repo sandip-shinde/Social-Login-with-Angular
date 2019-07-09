@@ -27,6 +27,7 @@ namespace StarterKit.UI.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
             BootStrapper.Initialize(new SQLiteConnection(FileAccessHelper.GetLocalFilePath("db")));
+            Xamarin.FormsMaps.Init();
             return base.FinishedLaunching(app, options);
         }
     }

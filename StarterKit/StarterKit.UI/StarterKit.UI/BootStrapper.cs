@@ -57,7 +57,7 @@ namespace StarterKit.UI
             _container.RegisterInstance<IMapper>(config.CreateMapper());
         }
 
-        private async static void RegisterAppStart()
+        private static void RegisterAppStart()
         {
         }
 
@@ -115,7 +115,7 @@ namespace StarterKit.UI
 
                 navigationService.Configure("LoginPage", typeof(LoginPage));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

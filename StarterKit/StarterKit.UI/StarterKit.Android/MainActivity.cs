@@ -17,25 +17,30 @@ namespace StarterKit.UI.Droid
         {
             try
             {
-
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
 
                 base.OnCreate(savedInstanceState);
+                global::Xamarin.FormsMaps.Init(this, savedInstanceState);
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+
+
+                // BootStrapper.Initialize(new SQLiteConnection(FileAccessHelper.GetLocalFilePath("otisdb")));
+                // RegisterDeviceServices();
                 LoadApplication(new App());
-                BootStrapper.Initialize(new SQLiteConnection(FileAccessHelper.GetLocalFilePath("otisdb")));
-                RegisterDeviceServices();
             }
             catch (System.Exception ex)
             {
-                   
+
+                 
             }
         }
 
         void RegisterDeviceServices()
         {
             BootStrapper.Container.RegisterSingleton<ILocalizationService, LocalizationService>();
+
            // BootStrapper.Container.RegisterSingleton<IDialogService, DialogService>();
         }
     }

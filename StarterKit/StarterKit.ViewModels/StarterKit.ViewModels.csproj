@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.1.0.555618" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Models\StarterKit.Models.csproj" />
     <ProjectReference Include="..\StarterKit.RequestHandler\StarterKit.RequestHandler.csproj" />
   </ItemGroup>
