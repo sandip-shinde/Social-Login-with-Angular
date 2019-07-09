@@ -27,7 +27,7 @@ namespace Xpanxion.MicroService.Api.Controllers
         {
             var request = new ServiceBusPostRequest
             {
-                ConnectionString = _appSettings.AzureStorageAccountConnectionString,
+                ConnectionString = _appSettings.AzureServiceBusConnectionString,
                 TopicName = apiRequest.TopicName,
                 Subscribers = apiRequest.Subscribers,
                 Message = apiRequest.Message

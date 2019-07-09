@@ -8,7 +8,7 @@ using Xpanxion.MicroService.Api.CloudServices.Azure.Interfaces;
 
 namespace Xpanxion.MicroService.Api.CloudServices.Azure
 {
-   public class ServiceBusManager : IServiceBusManager
+    public class ServiceBusManager : IServiceBusManager
     {
         static IQueueClient queueClient;
         static ITopicClient topicClient;
@@ -22,9 +22,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
             _managementClient = new ManagementClient(ServiceBusConnectionString);
         }
 
-
-
-        public async Task CreateQueue(string queueName)
+        private async Task CreateQueue(string queueName)
         {
             try
             {
@@ -44,7 +42,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
             }
         }
 
-        public async Task CreateTopic(string topicName)
+        private async Task CreateTopic(string topicName)
         {
             try
             {
@@ -64,7 +62,7 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
             }
         }
 
-        public async Task CreateSubscription(string topicName, string subscriberName)
+        private async Task CreateSubscription(string topicName, string subscriberName)
         {
             try
             {
@@ -81,6 +79,22 @@ namespace Xpanxion.MicroService.Api.CloudServices.Azure
                 {
                     await _managementClient.CreateSubscriptionAsync(topicName, subscriberName);
                 }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public async Task<bool> SendMessages(string messageBody, string serviceBusConnectionString, string topicName)
+        {
+            try
+            {
+                await CreateTopic(topicName);
+                topicClient = new TopicClient(ServiceBusConnectionString, topicName);
+                var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                await topicClient.SendAsync(message);
+                await topicClient.CloseAsync();
+                return true;
             }
             catch (Exception e)
             {

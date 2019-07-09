@@ -36,8 +36,8 @@ namespace Xpanxion.MicroService.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-	        var storageConnectionString = Configuration["connectionStrings:BlobStorage:Account"];
-		}
+            var storageConnectionString = Configuration["connectionStrings:BlobStorage:Account"];
+        }
 
         public IConfiguration Configuration { get; }
 
@@ -45,26 +45,27 @@ namespace Xpanxion.MicroService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-	        services.AddSwaggerGen(c => {
-		        c.SwaggerDoc("v1", new Info
-		        {
-			        Version = "v1",
-			        Title = "Xpanxion MicroService API",
-			        Description = "Xpanxion MicroService API Project",			       
-		        });
-	        });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "Xpanxion MicroService API",
+                    Description = "Xpanxion MicroService API Project",
+                });
+            });
 
-			RegisterSharedDependencies(services);
+            RegisterSharedDependencies(services);
             RegisterDatabaseContext(services);
             RegisterDatabaseRepositories(services);
             RegisterRequesValidators(services);
             RegisterRequestHandlers(services);
-	        RegisterAzureStorageManagers(services);
-			RegisterKeyVaultSettings(services);
+            RegisterAzureStorageManagers(services);
+            RegisterKeyVaultSettings(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,  IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
 
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
@@ -83,11 +84,12 @@ namespace Xpanxion.MicroService.Api
                     name: "default",
                     template: "api/{controller}/{action}/{id?}");
             });
-	        app.UseSwagger();
-	        app.UseSwaggerUI(c => {
-		        c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
-	        });
-			app.UseStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+            });
+            app.UseStaticFiles();
         }
 
         #region Dependency Registration
@@ -122,31 +124,34 @@ namespace Xpanxion.MicroService.Api
             serviceCollection.AddTransient<IRequestValidatorProvider, RequestValidatorProvider>();
             serviceCollection.AddTransient<IRequestValidator<UserRegisterRequest>, UserRegisterRequestValidator>();
             serviceCollection.AddTransient<IRequestValidator<UserGetRequest>, UserGetRequestValidator>();
-	        serviceCollection.AddTransient<IRequestValidator<BlobStoragePostRequest>, BlobStoragePostRequestValidator>();
-	        serviceCollection.AddTransient<IRequestValidator<BlobStorageGetRequest>, BlobStorageGetRequestValidator>();
-		}
+            serviceCollection.AddTransient<IRequestValidator<BlobStoragePostRequest>, BlobStoragePostRequestValidator>();
+            serviceCollection.AddTransient<IRequestValidator<BlobStorageGetRequest>, BlobStorageGetRequestValidator>();
+            serviceCollection.AddTransient<IRequestValidator<ServiceBusPostRequest>, AzureServiceBusPostRequestValidator>();
+        }
 
         private void RegisterRequestHandlers(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IRequestHandlerProvider, RequestHandlerProvider>();
             serviceCollection.AddTransient<IRequestHandler<UserRegisterRequest, UserRegisterResponse>, UserRegisterRequestHandler>();
             serviceCollection.AddTransient<IRequestHandler<UserGetRequest, UserGetResponse>, UserGetRequestHandler>();
-	        serviceCollection.AddTransient<IRequestHandler<BlobStoragePostRequest, BlobStoragePostResponse>, BlobStoragePostRequestHandler>();
-	        serviceCollection.AddTransient<IRequestHandler<BlobStorageGetRequest, BlobStorageGetResponse>, BlobStorageGetRequestHandler>();
-		}
+            serviceCollection.AddTransient<IRequestHandler<BlobStoragePostRequest, BlobStoragePostResponse>, BlobStoragePostRequestHandler>();
+            serviceCollection.AddTransient<IRequestHandler<BlobStorageGetRequest, BlobStorageGetResponse>, BlobStorageGetRequestHandler>();
+            serviceCollection.AddTransient<IRequestHandler<ServiceBusPostRequest, ServiceBusPostResponse>, ServiceBusPostRequestHandler>();
+        }
 
-	    private void RegisterAzureStorageManagers(IServiceCollection serviceCollection)
-	    {
-		    serviceCollection.AddTransient<IBlobStorageManager, BlobStorageManager>();
-		}
+        private void RegisterAzureStorageManagers(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<IBlobStorageManager, BlobStorageManager>();
+            serviceCollection.AddTransient<IServiceBusManager, ServiceBusManager>();
+        }
 
-	    private void RegisterKeyVaultSettings(IServiceCollection serviceCollection)
-	    {
-		    Configuration["AppSettings:AzureStorageAccountConnectionString"] = Configuration["connectionStrings:BlobStorage:Account"];
-			Configuration["AppSettings:AzureServiceBusConnectionString"] = Configuration["connectionStrings:ServiceBus:Account"];
-			serviceCollection.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-		}
+        private void RegisterKeyVaultSettings(IServiceCollection serviceCollection)
+        {
+            Configuration["AppSettings:AzureStorageAccountConnectionString"] = Configuration["connectionStrings:BlobStorage:Account"];
+            Configuration["AppSettings:AzureServiceBusConnectionString"] = Configuration["connectionStrings:ServiceBus:Account"];
+            serviceCollection.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+        }
 
-	    #endregion
+        #endregion
     }
 }
