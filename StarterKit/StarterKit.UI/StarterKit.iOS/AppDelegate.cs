@@ -25,6 +25,7 @@ namespace StarterKit.UI.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.FormsGoogleMaps.Init("AIzaSyCBB51QLII02sLtz12cxRFdrxiW9xP2FB8");
             LoadApplication(new App());
             BootStrapper.Initialize(new SQLiteConnection(FileAccessHelper.GetLocalFilePath("db")));
             Xamarin.FormsMaps.Init();

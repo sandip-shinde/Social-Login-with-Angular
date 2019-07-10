@@ -2,6 +2,7 @@
 using StarterKit.Common.Interface;
 using StarterKit.RequestHandler.Interfaces;
 using StarterKit.UI.Views;
+using StarterKit.UI.Views.MapViews;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +16,7 @@ namespace StarterKit.UI
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new PinItemsSourcePage();
         }
 
         protected override void OnStart()

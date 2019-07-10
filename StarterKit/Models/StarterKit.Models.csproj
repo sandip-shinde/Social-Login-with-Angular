@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.1.0.555618" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StarterKit.Common\StarterKit.Common.csproj" />
     <ProjectReference Include="..\StarterKit.Contracts\StarterKit.Contracts.csproj" />
   </ItemGroup>

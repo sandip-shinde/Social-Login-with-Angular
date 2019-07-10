@@ -6,7 +6,7 @@ using Android.OS;
 using SQLite;
 using StarterKit.Common.Helper.Interface;
 using StarterKit.UI.Droid.Helper;
-using Unity;
+using Unity; 
 
 namespace StarterKit.UI.Droid
 {
@@ -24,7 +24,12 @@ namespace StarterKit.UI.Droid
                 global::Xamarin.FormsMaps.Init(this, savedInstanceState);
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+                //var platformConfig = new PlatformConfig
+                //{
+                //    BitmapDescriptorFactory = new CachingNativeBitmapDescriptorFactory()
+                //};
 
+                Xamarin.FormsGoogleMaps.Init(this, savedInstanceState, null); // initialize for Xamarin.Forms.GoogleMaps
 
                 // BootStrapper.Initialize(new SQLiteConnection(FileAccessHelper.GetLocalFilePath("otisdb")));
                 // RegisterDeviceServices();
