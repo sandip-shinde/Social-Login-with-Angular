@@ -59,6 +59,8 @@ export class HeaderComponent implements OnInit {
     ) {
         this._logger.info('HeaderComponent : constructor ');
         this.userName = this._sharedDataService._sharedData.firstName;
+        if(localStorage.getItem(Constants.localStorageKeys.userName)!=null)
+        this.userName = localStorage.getItem(Constants.localStorageKeys.userName);
     }
 
     ngOnInit() {

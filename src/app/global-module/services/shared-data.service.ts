@@ -50,6 +50,7 @@ export class SharedDataService {
                 this._logger.info('SharedDataService : populateCommonData : successResponse ' + successResponse);
                 this._sharedData = successResponse.json();
                 this._sharedData.sessionId = localStorage.getItem(Constants.localStorageKeys.sessionId);
+                this._sharedData.userName = localStorage.getItem(Constants.localStorageKeys.userName);
             })
             .catch(
             errorResponse => {

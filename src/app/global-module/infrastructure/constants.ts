@@ -25,7 +25,8 @@ export class Constants {
     };
 
     static localStorageKeys = {
-        sessionId: 'sessionId'
+        sessionId: 'sessionId',
+        userName:'userName'
     };
 
     static cookies =

@@ -63,7 +63,7 @@ ngOnInit() {
 
   socialUserAccess_token(data) {  
     this._logger.info('SocialLoginComponent : socialUserAccess_token ');    
-    var response={apiToken:{access_token:data.idToken,refresh_token:data.authToken},sessionId:data.id};
+    var response={apiToken:{access_token:data.idToken,refresh_token:data.authToken, userName:data.firstName},sessionId:data.id};
     this.processLoginRequest(response);     
  
   }
@@ -72,6 +72,7 @@ ngOnInit() {
     this._logger.info('SocialLoginComponent : processLoginRequest ');
     if (response) {
         localStorage.setItem(Constants.localStorageKeys.isLoggedIn, 'true');
+        localStorage.setItem(Constants.localStorageKeys.userName, response.apiToken.userName);
         localStorage.setItem(Constants.localStorageKeys.apiToken, JSON.stringify(response.apiToken));
         localStorage.setItem(Constants.localStorageKeys.sessionId, response.sessionId);
         this._utilityService.redirectToURL(environment.appUrl);
